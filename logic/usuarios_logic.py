@@ -41,3 +41,15 @@ class UsuariosLogic(PybaLogic):
         sql = f"SELECT user FROM `comsedi`.`usuarios` WHERE user like '{user}';"
         result = database.executeQuery(sql)
         return result
+
+    def getUserByName(self, userName):
+        database = self.createDatabaseObj()
+        sql = (
+            "SELECT user, password, salt "
+            + f"FROM comsedi.usuarios where user like '{userName}';"
+        )
+        result = database.executeQuery(sql)
+        if len(result) > 0:
+            return result[0]
+        else:
+            return []

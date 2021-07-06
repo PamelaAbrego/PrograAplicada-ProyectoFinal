@@ -104,6 +104,10 @@ function login() {
     window.location.href = '/login';
 }
 
+function register() {
+    window.location.href = '/register';
+}
+
 function readArrayFromLocalStorage(keyName) {
     return JSON.parse(localStorage.getItem(keyName))
 }

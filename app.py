@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from logic.usuarios_logic import UsuariosLogic
 from flask_cors import CORS, cross_origin
 import bcrypt
 
 
 app = Flask(__name__)
+app.secret_key = "VibranioProyecto123!!"
 cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
@@ -39,9 +40,25 @@ def perfil_admin():
     return render_template("perfil_admin.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        logic = UsuariosLogic()
+        userName = request.form["user"]
+        password = request.form["password"]
+        userDict = logic.getUserByName(userName)
+        salt = userDict["salt"].encode("utf-8")
+        hashPasswd = bcrypt.hashpw(password.encode("utf-8"), salt)
+        dbPasswd = userDict["password"].encode("utf-8")
+        if hashPasswd == dbPasswd:
+            session["login_user"] = userName
+            session["loggedIn"] = True
+            return redirect("principal")
+        else:
+            return redirect("login")
+        return "posted login"
 
 
 @app.route("/register", methods=["GET", "POST"])

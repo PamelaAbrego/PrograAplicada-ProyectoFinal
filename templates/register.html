@@ -3,29 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../static/style_login.css">
 </head>
 
 <body>
-    <h2>Registrarse</h2>
+    <div class="contenedorLoginRegister">
+        <h2>Registrarse</h2>
 
-    <form action="{{ url_for('register') }}" method="POST">
-        <label for="user">Username:</label>
-        <input type="text" name="user" id="user">
-        <br><br>
+        <form action="{{ url_for('register') }}" method="POST">
+            <label class="blanco" for="user">Username:</label>
+            <input type="text" name="user" id="user">
+            <br><br>
 
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email">
-        <br><br>
+            <label class="blanco" for="email">Email:</label>
+            <input type="text" name="email" id="email">
+            <br><br>
 
-        <label for="password">password</label>
-        <input type="password" name="password" id="password">
-        <br><br>
+            <label class="blanco" for="password">Contraseña:</label>
+            <input type="password" name="password" id="password">
+            <br><br>
 
-        <input type="submit" name="submit" value="Send">
-    </form>
+            <label class="blanco" for="password">Confirmar contraseña:</label>
+            <input type="password" name="password" id="password">
+            <br><br>
+
+            <input class="submit" type="submit" name="submit" value="Send">
+        </form>
+    </div>
 
 </body>
 

@@ -14,55 +14,19 @@
 
 <body>
     <main>
-        <div class="contenedor__todo">
-            <div class="backBox">
-                <div class="backBoxLogin">
-                    <h3>¿Ya tienes una cuenta?</h3>
-                    <p>Inicia sesión para entrar en la página</p>
-                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
-                </div>
-                <div class="backBoxRegister">
-                    <h3>¿Aun no tienes una cuenta?</h3>
-                    <p>Regístrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Registrarse</button>
-                </div>
-            </div>
-            <!--Formulario de login y Registro-->
-            <div class="contenedorLoginRegister">
-                <!--Login-->
-                <div action="" class="formLogin">
-                    <h2> Iniciar Sesión</h2>
-                    <input type="text" name="user" id="user" placeholder="Usuario">
-                    <input type="password" name="passw" id="passw" placeholder="Contraseña">
-                    <button onclick="checkLogin()">Entrar</button>
+        <div class="contenedorLoginRegister">
+            <h2>Iniciar Sesión</h2>
+            <form action="{{ url_for('login') }}" method="POST">
+                <label class="blanco" for="user">Usuario:</label>
+                <input type="text" name="user" id="user">
+                <br><br>
 
-                </div>
-                <!--Registro-->
-                <div class="formRegistro">
-                    <h2>Registrarse</h2>
+                <label class="blanco" for="password">Contraseña:</label>
+                <input type="password" name="password" id="password">
+                <br><br>
 
-                    <form action="{{ url_for('register') }}" method="POST">
-                        <label for="user">Username:</label>
-                        <input type="text" name="user" id="user">
-                         <br><br>
-        
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email">
-                        <br><br>
-
-                        <label for="salt">password</label>
-                        <input type="text" name="salt" id="salt">
-                        <br><br>
-
-                        <label for="password">password</label>
-                        <input type="password" name="password" id="password">
-                        <br><br>
-
-                        <input type="submit" name="submit" value="Send">
-                    </form>
-                </div>
-            </div>
-
+                <input class="submit" type="submit" name="submit" value="Send">
+            </form>
         </div>
     </main>
     <script src="{{url_for('static', filename='script_login.js')}}"></script>
