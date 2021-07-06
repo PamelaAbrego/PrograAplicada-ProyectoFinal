@@ -8,5 +8,6 @@
         "--max-line-length=180"
     ],
     "liveServer.settings.port": 5502,
+    "python.pythonPath": "C:\\Users\\Pamela\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe",
     
 }
