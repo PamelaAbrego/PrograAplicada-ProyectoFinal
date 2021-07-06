@@ -5,11 +5,11 @@ class UsuariosLogic(PybaLogic):
     def __init__(self):
         super().__init__()
 
-    def insertUsuario(self, usuario):
+    def insertUsuario(self, user, email, password, salt):
         database = self.databaseObj
         sql = (
             "INSERT INTO `comsedi`.`usuarios` (`id`,`user`,`email`,`password`,`salt`)"
-            + f"VALUES (0, '{usuario['user']}', '{usuario['email']}', '{usuario['password']}', '{usuario['salt']}');"
+            + f"VALUES (0, '{user}', '{email}', '{password}', '{salt}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
@@ -35,3 +35,9 @@ class UsuariosLogic(PybaLogic):
         sql = f"DELETE FROM `comsedi`.`usuarios` WHERE id = {id};"
         rows = database.executeNonQueryRows(sql)
         return rows
+
+    def checkUser(self, user):
+        database = self.databaseObj
+        sql = f"SELECT user FROM `comsedi`.`usuarios` WHERE user like '{user}';"
+        result = database.executeQuery(sql)
+        return result

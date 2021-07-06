@@ -41,10 +41,25 @@
                 <div class="formRegistro">
                     <h2>Registrarse</h2>
 
-                    <input type="text" name="user_Reg" id="user_Reg" placeholder="Usuario">
-                    <input type="password" name="passw_Reg" id="passw_Reg" placeholder="Contraseña">
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    <button onclick="registerNewUser()">Registrarse</button>
+                    <form action="{{ url_for('register') }}" method="POST">
+                        <label for="user">Username:</label>
+                        <input type="text" name="user" id="user">
+                         <br><br>
+        
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email">
+                        <br><br>
+
+                        <label for="salt">password</label>
+                        <input type="text" name="salt" id="salt">
+                        <br><br>
+
+                        <label for="password">password</label>
+                        <input type="password" name="password" id="password">
+                        <br><br>
+
+                        <input type="submit" name="submit" value="Send">
+                    </form>
                 </div>
             </div>
 

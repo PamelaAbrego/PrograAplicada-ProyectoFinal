@@ -1,5 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+from logic.usuarios_logic import UsuariosLogic
 from flask_cors import CORS, cross_origin
+import bcrypt
 
 
 app = Flask(__name__)
@@ -42,9 +44,28 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/registro")
-def registro():
-    return render_template("registro.html")
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    data = {}
+    if request.method == "GET":
+        return render_template("register.html")
+    elif request.method == "POST":
+        logic = UsuariosLogic()
+        user = request.form["user"]
+        result = logic.checkUser(user)
+        if len(result) == 0:
+            email = request.form["email"]
+            passwd = request.form["password"]
+            salt = bcrypt.gensalt(rounds=8)
+            strsalt = salt.decode("utf-8")
+            encPassword = passwd.encode("utf-8")
+            hashPasswd = bcrypt.hashpw(encPassword, salt)
+            strPasswd = hashPasswd.decode("utf-8")
+            rows = logic.insertUsuario(user, email, strPasswd, strsalt)
+            return redirect("login")
+        else:
+            return redirect("register")
+    return redirect("login")
 
 
 @app.route("/gruas")
