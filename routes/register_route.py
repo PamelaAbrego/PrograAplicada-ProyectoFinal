@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request
+from flask import redirect, render_template, request, flash
 from logic.usuarios_logic import UsuariosLogic
 import bcrypt
 
@@ -8,7 +8,6 @@ class Register:
     def configure_routes(app):
         @app.route("/register", methods=["GET", "POST"])
         def register():
-            data = {}
             if request.method == "GET":
                 return render_template("register.html")
             elif request.method == "POST":
@@ -28,6 +27,8 @@ class Register:
                         rows = logic.insertUsuario(user, email, strPasswd, strsalt)
                         return redirect("login")
                     else:
+                        flash("No pudimos verificar las credenciales", "registro")
+                        flash("Verifica que los datos esten correctos", "registro")
                         return redirect("register")
                 else:
                     return redirect("register")

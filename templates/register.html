@@ -16,6 +16,8 @@
     <div class="contenedorLoginRegister">
         <h2>Registrarse</h2>
 
+        
+
         <form action="{{ url_for('register') }}" method="POST">
             <label class="blanco" for="user">Username:</label>
             <input type="text" name="user" id="user">
@@ -34,9 +36,24 @@
             <br><br>
 
             <input class="submit" type="submit" name="submit" value="Send">
-        </form>
-    </div>
 
+            {% with messages = get_flashed_messages(with_categories = true, category_filter=["registro"]) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                <p>{{message}}</p>
+
+                {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
+        </form>
+
+
+    </div>
 </body>
 
 </html>
