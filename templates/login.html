@@ -26,6 +26,20 @@
                 <br><br>
 
                 <input class="submit" type="submit" name="submit" value="Send">
+
+            {% with messages = get_flashed_messages(with_categories = true, category_filter=["login"]) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                <p>{{message}}</p>
+
+                {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
             </form>
         </div>
     </main>

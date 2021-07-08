@@ -4,6 +4,8 @@ from flask_cors import CORS, cross_origin
 import bcrypt
 from routes.register_route import Register
 from routes.login_route import Login
+from routes.perfil_cliente_route import PerfilCliente
+from routes.perfil_admin_route import PerfilAdmin
 
 
 app = Flask(__name__)
@@ -12,6 +14,10 @@ cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 Register.configure_routes(app)
 Login.configure_routes(app)
+PerfilCliente.configure_routes(app)
+PerfilAdmin.configure_routes(app)
+
+
 
 
 @app.route("/")
@@ -33,15 +39,6 @@ def contacto():
 def capacitaciones():
     return render_template("capacitaciones.html")
 
-
-@app.route("/perfil_cliente")
-def perfil_cliente():
-    return render_template("perfil_cliente.html")
-
-
-@app.route("/perfil_admin")
-def perfil_admin():
-    return render_template("perfil_admin.html")
 
 
 @app.route("/gruas")

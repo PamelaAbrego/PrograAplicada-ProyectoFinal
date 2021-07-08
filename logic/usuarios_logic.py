@@ -5,11 +5,11 @@ class UsuariosLogic(PybaLogic):
     def __init__(self):
         super().__init__()
 
-    def insertUsuario(self, user, email, password, salt):
+    def insertUsuario(self, user, email, role, password, salt):
         database = self.databaseObj
         sql = (
-            "INSERT INTO `comsedi`.`usuarios` (`id`,`user`,`email`,`password`,`salt`)"
-            + f"VALUES (0, '{user}', '{email}', '{password}', '{salt}');"
+            "INSERT INTO `comsedi`.`usuarios` (`id`,`user`,`email`,`role`,`password`,`salt`)"
+            + f"VALUES (0, '{user}', '{email}','{role}','{password}', '{salt}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
@@ -24,7 +24,7 @@ class UsuariosLogic(PybaLogic):
         database = self.databaseObj
         sql = (
             "UPDATE `comsedi`.`usuarios` "
-            + f"SET `user` = '{usuario['user']}', `email` = '{usuario['email']}', `password` = '{usuario['password']}', `salt` = '{usuario['salt']}' "
+            + f"SET `user` = '{usuario['user']}', `email` = '{usuario['email']}',`role` = '{usuario['role']}', `password` = '{usuario['password']}', `salt` = '{usuario['salt']}' "
             + f"WHERE `id` = {id};"
         )
         rows = database.executeNonQueryRows(sql)
@@ -45,7 +45,7 @@ class UsuariosLogic(PybaLogic):
     def getUserByName(self, userName):
         database = self.createDatabaseObj()
         sql = (
-            "SELECT user, password, salt "
+            "SELECT user, password, salt, role "
             + f"FROM comsedi.usuarios where user like '{userName}';"
         )
         result = database.executeQuery(sql)
@@ -53,3 +53,16 @@ class UsuariosLogic(PybaLogic):
             return result[0]
         else:
             return []
+
+    def getEmailByName(self, userName):
+        database = self.createDatabaseObj()
+        sql = (
+            "SELECT email "
+            + f"FROM comsedi.usuarios where user like '{userName}';"
+        )
+        result = database.executeQuery(sql)
+        if len(result) > 0:
+            return result[0]["email"]
+        else:
+            return []
+

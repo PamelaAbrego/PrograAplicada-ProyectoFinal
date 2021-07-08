@@ -13,6 +13,7 @@ class Register:
             elif request.method == "POST":
                 logic = UsuariosLogic()
                 user = request.form["user"]
+                role = "Cliente"
                 result = logic.checkUser(user)
                 if len(result) == 0:
                     email = request.form["email"]
@@ -24,7 +25,7 @@ class Register:
                         encPassword = passwd.encode("utf-8")
                         hashPasswd = bcrypt.hashpw(encPassword, salt)
                         strPasswd = hashPasswd.decode("utf-8")
-                        rows = logic.insertUsuario(user, email, strPasswd, strsalt)
+                        rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
                         return redirect("login")
                     else:
                         flash("No pudimos verificar las credenciales", "registro")
