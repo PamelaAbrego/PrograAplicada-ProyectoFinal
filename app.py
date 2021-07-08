@@ -6,6 +6,7 @@ from routes.register_route import Register
 from routes.login_route import Login
 from routes.perfil_cliente_route import PerfilCliente
 from routes.perfil_admin_route import PerfilAdmin
+from routes.Proyectos_route import Proyectos
 
 
 app = Flask(__name__)
@@ -16,6 +17,7 @@ Register.configure_routes(app)
 Login.configure_routes(app)
 PerfilCliente.configure_routes(app)
 PerfilAdmin.configure_routes(app)
+Proyectos.configure_routes(app)
 
 
 
@@ -66,14 +68,14 @@ def form_gruas():
     return render_template("form_gruas.html")
 
 
-@app.route("/proyectos")
-def proyectos():
-    return render_template("proyectos.html")
+#@app.route("/proyectos")
+#def proyectos():
+#    return render_template("proyectos.html")
 
 
-@app.route("/form_proyectos")
-def form_proyectos():
-    return render_template("form_proyectos.html")
+#@app.route("/form_proyectos")
+#def form_proyectos():
+#    return render_template("form_proyectos.html")
 
 
 @app.route("/admin_proyectos")
