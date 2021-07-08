@@ -30,7 +30,7 @@ CREATE TABLE `form_gruas` (
   `modelo` int NOT NULL,
   `cantidad` int NOT NULL,
   `ubicacion` varchar(45) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` varchar(45) NOT NULL,
   `tiempo` int NOT NULL,
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -55,14 +55,14 @@ DROP TABLE IF EXISTS `form_servicios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `form_servicios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `fecha_envio` date NOT NULL,
+  `fecha_envio` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `numero` varchar(45) NOT NULL,
-  `fecha_inicio` date NOT NULL,
-  `fecha_final` date NOT NULL,
+  `fecha_inicio` varchar(45) NOT NULL,
+  `fecha_final` varchar(45) NOT NULL,
   `ubicacion` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
+  `descripcion` varchar(1000) NOT NULL,
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -92,7 +92,7 @@ CREATE TABLE `usuarios` (
   `password` varchar(1000) NOT NULL,
   `salt` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-08  2:20:29
+-- Dump completed on 2021-07-08 11:48:38
