@@ -7,7 +7,7 @@
     <title>Formulario Cotizaciones</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style_formproyectos.css')}}">
     <style>
-        .correcion {
+        .error {
             color: red;
         }
     </style>
@@ -16,6 +16,19 @@
 
 
 <body id="body">
+
+{% with messages = get_flashed_messages()%}
+
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages%}
+    <li> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endwith %}
+
 
     <div class="container">
         <nav class="navbar">
@@ -43,63 +56,102 @@
     <p> Completa este formulario para proceder con tu cotización: </p>
     <br>
     <br>
-    <form>
+    <form action="{{ url_for('form_proyectos') }}" method="post">
         <p> <b> Tipo de cotización </b> </p>
         <br>
-        <input type="checkbox" id="Eléctrico" name="Coti">
+        <input type="checkbox" id="Eléctrico" name="Coti" value="Eléctrico">
         <label for "CotiCivil"> Eléctrico </label> <br>
-        <input type="checkbox" id="Civil" name="Coti">
+        <input type="checkbox" id="Civil" name="Coti" value="Civil">
         <label for "CotiCivil"> Civil </label> <br>
-        <input type="checkbox" id="Poda" name="Coti">
+        <input type="checkbox" id="Poda" name="Coti" value="Poda">
         <label for "CotiPoda"> Poda </label>
-        <p id="sCoti" class="correcion"> </p>
+        <!--<p id="sCoti" class="correcion"> </p>-->
+        <br>
+        <br>
+        {% if error1 %}
+        <p class=error> <strong> Error: </strong> {{ error1 }} </p>
+        {% endif %}
 
         <br>
         <br>
         <p> <b> Tipo de cliente </b> </p> <br>
-        <input type="radio" id="Natural" name="Cliente">
+        <input type="radio" id="Natural" name="Cliente" value="Natural" checked="checked">
         <label for "ClienteNat"> Persona natural </label> <br>
-        <input type="radio" id="Empresa" name="Cliente">
+        <input type="radio" id="Empresa" name="Cliente" value="Empresa">
         <label for "ClienteEmp"> Empresa </label>
-        <p id="sClien" class="correcion"> </p>
-
+        
+        <br>
         <br>
         <br>
         <label for "fphone"> <b> Número telefónico (sin guión) </b> </label> <br>
-        <input type="number" id="fphone" name="fphone" placeholder="..." size="40">
-        <p id="sPhone" class="correcion"> </p>
+        <input type="number" id="fphone" name="fphone" placeholder="..." size="40" value="{{ request.form.fphone }}">
+        <!-- <p id="sPhone" class="correcion"> </p> -->
+        <br>
+        <br>
+        {% if error2 %}
+        <p class=error> <strong> Error: </strong> {{ error2 }} </p>
+        {% endif %}
+        {% if error3 %}
+        <p class=error> <strong> Error: </strong> {{ error3 }} </p>
+        {% endif %}
 
         <br>
         <br>
         <label for "datemin"> <b> Fecha de inicio </b> </label>
-        <input type="date" id="datemin" name="datemin"><br>
-        <p id="sDate1" class="correcion"> </p>
+        <input type="date" id="datemin" name="datemin" value="{{ request.form.datemin }}" >
+        <br>
+        <!-- <p id="sDate1" class="correcion"> </p> -->
+        <br>
+        {% if error4 %}
+        <p class=error> <strong> Error: </strong> {{ error4 }} </p>
+        {% endif %}
 
         <br>
         <br>
         <label for "date"> <b> Fecha final </b> </label>
-        <input type="date" id="datef" name="date">
-        <p id="sDate2" class="correcion"> </p>
+        <input type="date" id="datef" name="date" value="{{ request.form.date }}">
+        <!-- <p id="sDate2" class="correcion"> </p> -->
+        <br>
+        <br>
+        {% if error5 %}
+        <p class=error> <strong> Error: </strong> {{ error5 }} </p>
+        {% endif %}
 
         <br>
         <br>
         <label for "floc"> <b> Ubicación del proyecto </b> </label> <br> <br>
-        <input type="text" id="floc" name="floc" placeholder="Departamento, municipio, calle" size="40">
-        <p id="sLoc" class="correcion"> </p>
+        <input type="text" id="floc" name="floc" placeholder="Departamento, municipio, calle" size="40" value="{{ request.form.floc }}">
+        <!-- <p id="sLoc" class="correcion"> </p> -->
+        <br>
+        <br>
+        {% if error6 %}
+        <p class=error> <strong> Error: </strong> {{ error6 }} </p>
+        {% endif %}
 
         <br>
         <br>
         <label for "detalles"> <b> Descripción del proyecto </b> </label> <br> <br>
-        <textarea id="detalles" name="detalles" rows=5, cols=50> </textarea>
-        <p id="sDesc" class="correcion"> </p>
-
+        <textarea id="detalles" name="detalles" rows=5, cols=50>{{ request.form.detalles }}</textarea>
+        <!-- <p id="sDesc" class="correcion"> </p> -->
+        <br>
+        <br>
+        {% if error7 %}
+        <p class=error> <strong> Error: </strong> {{ error7 }} </p>
+        {% endif %}
+        {% if error8 %}
+        <p class=error> <strong> Error: </strong> {{ error8 }} </p>
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <input type="submit" value="Enviar formulario" onclick="checkData()" id="Checking" name="Checking">
 
     </form>
 
     <br>
     <br>
 
-    <button type="button" onclick="comprobarDatos()"> Enviar formulario </button>
+ <!--   <button type="button" onclick="comprobarDatos()"> Enviar formulario </button> -->
     <br>
     <br>
     <br>
@@ -158,98 +210,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<!--
-<body style="color: white;">
-    <h1 style="color: gold;">Solicitud de cotización </h1>
-
-    <p> Completa este formulario para proceder con tu cotización: </p>
-    <br>
-    <form>
-        <p> <b> Tipo de cotización </b> </p>
-        <input type="checkbox" id="Eléctrico" name="Coti">
-        <label for "CotiCivil"> Eléctrico </label> <br>
-        <input type="checkbox" id="Civil" name="Coti">
-        <label for "CotiCivil"> Civil </label> <br>
-        <input type="checkbox" id="Poda" name="Coti">
-        <label for "CotiPoda"> Poda </label>
-        <p id="sCoti" class="correcion"> </p>
-
-        <br>
-        <p> <b> Tipo de cliente </b> </p>
-        <input type="radio" id="Natural" name="Cliente">
-        <label for "ClienteNat"> Persona natural </label> <br>
-        <input type="radio" id="Empresa" name="Cliente">
-        <label for "ClienteEmp"> Empresa </label>
-        <p id="sClien" class="correcion"> </p>
-
-        <!--
-        <br>
-        <br>
-        <label for "fname"> <b> Nombre persona/empresa </b> </label> <br>
-        <input type="text" id="fname" name="fname" placeholder="..." size="30">
-        <p id="sName" class="correcion"> </p>
-    
-        <br>
-        <br>
-        <label for "fmail"> <b> Correo electrónico </b> </label> <br>
-        <input type="text" id="fmail" name="fmail" placeholder="..." size="40">
-        <p id="sMail" class="correcion"> </p>
-        
-
-        <br>
-        <br>
-        <label for "fphone"> <b> Número telefónico (sin guión) </b> </label> <br>
-        <input type="number" id="fphone" name="fphone" placeholder="..." size="40">
-        <p id="sPhone" class="correcion"> </p>
-
-        <br>
-        <br>
-        <label for "datemin"> <b> Fecha de inicio </b> </label>
-        <input type="date" id="datemin" name="datemin"><br>
-        <p id="sDate1" class="correcion"> </p>
-
-        <br>
-        <br>
-        <label for "date"> <b> Fecha final </b> </label>
-        <input type="date" id="datef" name="date">
-        <p id="sDate2" class="correcion"> </p>
-
-        <br>
-        <br>
-        <label for "floc"> <b> Ubicación del proyecto </b> </label> <br>
-        <input type="text" id="floc" name="floc" placeholder="Departamento, municipio, calle" size="40">
-        <p id="sLoc" class="correcion"> </p>
-
-        <br>
-        <br>
-        <label for "detalles"> <b> Descripción del proyecto </b> </label> <br>
-        <textarea id="detalles" name="detalles" rows=5, cols=50> </textarea>
-        <p id="sDesc" class="correcion"> </p>
-
-
-    </form>
-
-    <br>
-    <br>
-    <button type="button" onclick="comprobarDatos()"> Enviar formulario </button>
-
-
-    <p id="ulttext"> <b> Las fechas en las que se realice el proyecto estarán sujetas a la disponibilidad
-            de nuestros servicios * </b>
-    <p>
-
-
-        <script src="{{url_for('static', filename='formscript.js')}}"></script>
-</body>
-
-</html>
-
--->

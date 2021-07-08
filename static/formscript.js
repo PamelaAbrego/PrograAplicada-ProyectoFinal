@@ -273,6 +273,18 @@ function readArrayFromLocalStorage(keyName) {
     return JSON.parse(localStorage.getItem(keyName))
 }
 
+
+function checkData() {
+    var cot = checkInputCheckBox();
+    var cli = checkRadio();
+    var ubi = checkUbicacion();
+    var num = checkNumero();
+    var desc = checkDescription();
+    var suma = cot + cli + ubi + num + desc;
+    if (suma == 0) {
+        return true;
+    }
+}
 Prueba()
 
 
