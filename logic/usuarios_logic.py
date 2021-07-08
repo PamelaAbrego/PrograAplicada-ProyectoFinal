@@ -66,3 +66,15 @@ class UsuariosLogic(PybaLogic):
         else:
             return []
 
+    def getAllUsers(self):
+        database = self.createDatabaseObj()
+        sql = (
+            "SELECT * "
+            + f"FROM comsedi.usuarios;"
+        )
+        result = database.executeQuery(sql)
+        if len(result) > 0:
+            return result
+        else:
+            return []
+
