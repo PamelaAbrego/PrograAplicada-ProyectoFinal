@@ -42,3 +42,9 @@ class GruasLogic(PybaLogic):
         sql = f"SELECT * FROM comsedi.form_gruas;"
         result = database.executeQuery(sql)
         return result
+
+    def getAllByUser(self, user):
+        database = self.databaseObj
+        sql = f"SELECT * FROM comsedi.form_gruas where usuario like '{user}';"
+        result = database.executeQuery(sql)
+        return result

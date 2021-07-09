@@ -47,3 +47,10 @@ class ProyectosLogic(PybaLogic):
         sql = f"SELECT sysdate();"
         result = database.executeQuery(sql)
         return result
+
+    def getAllByUser(self, user):
+        database = self.databaseObj
+        sql = f"SELECT * FROM comsedi.form_servicios where usuario like '{user}';"
+        result = database.executeQuery(sql)
+        return result
+

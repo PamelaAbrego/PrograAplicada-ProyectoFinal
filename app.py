@@ -8,8 +8,8 @@ from routes.perfil_cliente_route import PerfilCliente
 from routes.perfil_admin_route import PerfilAdmin
 from routes.Proyectos_route import Proyectos
 from routes.gruas_route import Gruas
-
-
+from routes.admin_gruas_route import Admin_gruas
+from routes.admin_proyectos_route import Admin_proyectos
 
 app = Flask(__name__)
 app.secret_key = "VibranioProyecto123!!"
@@ -21,8 +21,8 @@ PerfilCliente.configure_routes(app)
 PerfilAdmin.configure_routes(app)
 Proyectos.configure_routes(app)
 Gruas.configure_routes(app)
-
-
+Admin_gruas.configure_routes(app)
+Admin_proyectos.configure_routes(app)
 
 
 @app.route("/")
@@ -45,12 +45,6 @@ def capacitaciones():
     return render_template("capacitaciones.html")
 
 
-
-#@app.route("/gruas")
-#def gruas():
-#    return render_template("gruas.html")
-
-
 @app.route("/cotizaciones")
 def cotizaciones():
     return render_template("cotizaciones.html")
@@ -60,30 +54,6 @@ def cotizaciones():
 def mision_vision():
     return render_template("mision_vision.html")
 
-
-@app.route("/admin_gruas")
-def admin_gruas():
-    return render_template("admin_gruas.html")
-
-
-#@app.route("/form_gruas")
-#def form_gruas():
-#    return render_template("form_gruas.html")
-
-
-#@app.route("/proyectos")
-#def proyectos():
-#    return render_template("proyectos.html")
-
-
-#@app.route("/form_proyectos")
-#def form_proyectos():
-#    return render_template("form_proyectos.html")
-
-
-@app.route("/admin_proyectos")
-def admin_proyectos():
-    return render_template("admin_proyectos.html")
 
 
 if __name__ == "__main__":

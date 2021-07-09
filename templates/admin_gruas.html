@@ -68,13 +68,25 @@
           <br><br>
           <table style="color: #ffffff;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
             <tr>
-              <th>Cliente</th>
-              <th>Correo</th>
-              <th>Modelo de grua</th>
+              <th>Usuario</th>
+              <th>Modelo de grúa</th>
               <th>Cantidad</th>
               <th>Ubicacion</th>
               <th>Fecha</th>
               <th>Tiempo requerido</th>
+              <th>Estado</th>
+
+              {% for grua in dataGruas %}
+                <tr>
+                    <th>{{grua["usuario"]}}</th>
+                    <th>{{grua["modelo"]}}</th>
+                    <th>{{grua["cantidad"]}}</th>
+                    <th>{{grua["ubicacion"]}}</th>
+                    <th>{{grua["fecha"]}}</th>
+                    <th>{{grua["tiempo"]}}</th>
+                    <th>---Iran botones---</th>
+                </tr>
+              {% endfor %}
             </tr>
           </table><br>
         </div>

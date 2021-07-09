@@ -52,14 +52,12 @@
                         <table id="tabla" class="admintbl" name="Registros" style="width:90%" border="1">
                             <tr>
                                 <th>Usuario</th>
-                                <th>Contraseña</th>
                                 <th>Correo</th>
                                 <th>Rol</th>
 
                                 {% for user in dataUsers %}
                                 <tr>
                                     <th>{{user["user"]}}</th>
-                                    <th>{{user["password"]}}</th>
                                     <th>{{user["email"]}}</th>
                                     <th>{{user["role"]}}</th>
                                 </tr>
@@ -70,7 +68,7 @@
                     </div>
 
                     <style>
-                        .boton {
+                        .submit {
                             text-decoration: none;
                             padding: 10px;
                             font-weight: 300;
@@ -81,7 +79,7 @@
                             border: 2px solid #ffffff;
                         }
 
-                        .boton:hover {
+                        .submit:hover {
                             color: #1e2b4e;
                             background-color: #ffffff;
                         }
@@ -143,11 +141,11 @@
                     <br>
                     <h1 class="main__title">Registros de Alquileres de Grúas</h1>
                     <br>
-                    <a href="{{url_for('admin_gruas')}}" class="boton">Ver Alquileres</a>
+                    <a href="{{url_for('admin_gruas')}}" class="submit">Ver Alquileres</a>
                     <br><br>
                     <h1 class="main__title">Registros de Cotizaciones</h1>
                     <br>
-                    <a href="{{url_for('admin_proyectos')}}" class="boton">Ver Cotizaciones</a>
+                    <a href="{{url_for('admin_proyectos')}}" class="submit">Ver Cotizaciones</a>
 
                 </div>
                 <br>

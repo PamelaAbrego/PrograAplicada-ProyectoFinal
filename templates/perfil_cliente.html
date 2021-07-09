@@ -54,20 +54,27 @@
                         <br>
                         <table id="tabla" class="admintbl" name="Registros" style="width:90%" border="1">
                             <tr>
-                                <th>Cliente</th>
-                                <th>Correo</th>
                                 <th>Modelo de grua</th>
                                 <th>Cantidad</th>
                                 <th>Ubicacion</th>
                                 <th>Fecha</th>
                                 <th>Tiempo requerido</th>
                                 <th>Estado</th>
+
+                                {% for grua in dataGruas %}
+                                    <tr>
+                                        <th>{{grua["modelo"]}}</th>
+                                        <th>{{grua["cantidad"]}}</th>
+                                        <th>{{grua["ubicacion"]}}</th>
+                                        <th>{{grua["fecha"]}}</th>
+                                        <th>{{grua["tiempo"]}}</th>
+                                        <th>{{grua["estado"]}}</th>
+                                    </tr>
+                                {% endfor %}
                             </tr>
                         </table>
                         <br>
                         <h3 id="result_alquileres"></h3>
-                        <br>
-                        <br>
                     </div>
 
                     <div class="cotizaciones">
@@ -78,13 +85,23 @@
                             <tr>
                                 <th>Fecha envío solicitud </th>
                                 <th>Tipo de cotización</th>
-                                <th>Nombre cliente</th>
-                                <th>Correo electrónico</th>
                                 <th>Número telefónico</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha final</th>
                                 <th>Ubicación proyecto</th>
                                 <th> Estado </th>
+
+                                {% for proyecto in dataProyectos %}
+                            <tr>
+                                <th>{{proyecto["fecha_envio"]}}</th>
+                                <th>{{proyecto["tipo"]}}</th>
+                                <th>{{proyecto["numero"]}}</th>
+                                <th>{{proyecto["fecha_inicio"]}}</th>
+                                <th>{{proyecto["fecha_final"]}}</th>
+                                <th>{{proyecto["ubicacion"]}}</th>
+                                <th>---Iran botones---</th>
+                            </tr>
+                        {% endfor %}
                             </tr>
                         </table>
                         <br>

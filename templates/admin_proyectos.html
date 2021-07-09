@@ -75,14 +75,27 @@
                     <tr>
                         <th> Fecha cotización </th>
                         <th> Tipo de cotización</th>
-                        <th> Tipo cliente</th>
-                        <th> Nombre </th>
-                        <th> Correo electrónico </th>
+                        <th> Usuario </th>
                         <th> Número telefónico </th>
                         <th> Fecha entrega</th>
                         <th> Fecha devolución </th>
                         <th> Ubicación proyecto </th>
                         <th> Descripción proyecto </th>
+                        <th> Estado </th>
+
+                        {% for proyecto in dataProyectos %}
+                            <tr>
+                                <th>{{proyecto["fecha_envio"]}}</th>
+                                <th>{{proyecto["tipo"]}}</th>
+                                <th>{{proyecto["usuario"]}}</th>
+                                <th>{{proyecto["numero"]}}</th>
+                                <th>{{proyecto["fecha_inicio"]}}</th>
+                                <th>{{proyecto["fecha_final"]}}</th>
+                                <th>{{proyecto["ubicacion"]}}</th>
+                                <th>{{proyecto["descripcion"]}}</th>
+                                <th>---Iran botones---</th>
+                            </tr>
+                        {% endfor %}
                     </tr>
                 </table>
 
