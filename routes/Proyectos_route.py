@@ -36,7 +36,6 @@ class Proyectos:
                 ubicacion = request.form["floc"]
                 descripcion = request.form["detalles"]
                 estado = "Enviado" 
-                checking = request.form["Checking"]
                 
                 
                 types = ""
