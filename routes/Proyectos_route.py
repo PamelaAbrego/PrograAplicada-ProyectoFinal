@@ -29,7 +29,7 @@ class Proyectos:
                 logic = ProyectosLogic()
                 fecha_envio = logic.getDate()
                 tipo = request.form.getlist("Coti")
-                usuario = request.form["Cliente"]
+                usuario = session["login_user"]
                 numero = request.form["fphone"]
                 fecha_inicio = request.form["datemin"]
                 fecha_final = request.form["date"]
@@ -89,7 +89,7 @@ class Proyectos:
                     logic.insertProyecto(fechai, types, usuario, numero, fecha_inicio, fecha_final, ubicacion, descripcion, estado)
                     return render_template("perfil_cliente.html", confirmation=confirmation)
 
-                return render_template("form_proyectos.html", error1=error1, error2=error2, error3=error3, error4=error4, error5=error5, error6=error6, error7=error7, error8=error8)
+                # return render_template("form_proyectos.html", error1=error1, error2=error2, error3=error3, error4=error4, error5=error5, error6=error6, error7=error7, error8=error8)
 
                 
 

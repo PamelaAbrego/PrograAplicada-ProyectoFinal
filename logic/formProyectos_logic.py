@@ -8,7 +8,7 @@ class ProyectosLogic(PybaLogic):
     def insertProyecto(self, fecha_envio, tipo, usuario, numero, fecha_inicio, fecha_final, ubicacion, descripcion, estado):
         database = self.databaseObj
         sql = (
-            "INSERT INTO `comsedi`.`form_servicios` (`id`,`fecha_envio`,`tipo`,`usuario`,`numero`,`fecha_inicio`,`fecha_final`,`ubicacion`, `descripcion`, `estado`)"
+            "INSERT INTO `comsedi`.`form_servicios` (`id`, `fecha_envio`,`tipo`,`usuario`,`numero`,`fecha_inicio`,`fecha_final`,`ubicacion`, `descripcion`, `estado`)"
             + f"VALUES(0, '{fecha_envio}', '{tipo}', '{usuario}', {numero}, '{fecha_inicio}', '{fecha_final}', '{ubicacion}', '{descripcion}', '{estado}' );"
         )
         rows = database.executeNonQueryRows(sql)

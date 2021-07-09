@@ -23,7 +23,7 @@ class Gruas:
                 error5 = None
                 
                 logic = GruasLogic()
-                usuario = "Username"
+                usuario = session["login_user"]
                 modelo = request.form["modelo"]
                 cantidad = request.form["cantidad"]
                 ubicacion = request.form["ubicacion"]
