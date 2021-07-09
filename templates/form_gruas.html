@@ -7,15 +7,26 @@
     <title>Formulario Cotizaciones</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style_formproyectos.css')}}">
     <style>
-        .correcion {
+        .error {
             color: red;
         }
     </style>
 </head>
 
-
-
 <body id="body">
+
+{% with messages = get_flashed_messages()%}
+
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages%}
+    <li> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endwith %}
+
 
     <div class="container">
         <nav class="navbar">
@@ -40,48 +51,67 @@
     <br>
     <h1>Formulario para Alguiler de Grúas</h1>
         <br>
-        <form>
+        <form action="{{ url_for('form_gruas') }}" method="post">
         
-
-            <style>
-                .correccion {
-                    color: red;
-                }
-            </style>
 
             <label class="viñeta">Modelo:</label>
             <br>
-            <input type="number" id="modelo" min="1" max="2">
+            <input type="number" id="modelo" name="modelo" min="1" max="2" value="{{ request.form.modelo }}">
             <br>
+            <br>
+            {% if error1 %}
+            <p class=error> <strong> Error: </strong> {{ error1 }} </p>
+            {% endif %}
             <label class="correccion" for="" id="r_modelo"></label>
-            <br><br>
+            <br>
+            <br>
             <label class="viñeta">Cantidad de gruas:</label>
             <br>
-            <input type="number" id="cantidad" name="cantidad" min="1" max="10">
+            <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="{{ request.form.cantidad }}">
             <br>
+            {% if error2 %}
+            <p class=error> <strong> Error: </strong> {{ error2 }} </p>
+            {% endif %}
             <label class="correccion" id="r_cantidad"></label>
             <br><br>
             <label class="viñeta">Ubicación:</label>
             <br>
-            <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación...">
+            <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación..." value="{{ request.form.ubicacion }}">
             <br>
+            <br>
+            {% if error3 %}
+            <p class=error> <strong> Error: </strong> {{ error3 }} </p>
+            {% endif %}
             <label class="correccion" id="r_ubicacion"></label>
             <br><br>
             <label class="viñeta">Fecha:</label>
             <br>
-            <input type="date" id="fecha" name="fecha">
+            <input type="date" id="fecha" name="fecha" value="{{ request.form.fecha }}">
             <br>
+            <br>
+            {% if error4 %}
+            <p class=error> <strong> Error: </strong> {{ error4 }} </p>
+            {% endif %}
             <label class="correccion" id="r_fecha"></label>
             <br><br>
             <label class="viñeta">Tiempo requerido(en horas):</label>
             <br>
-            <input type="number" id="tiempo" name="tiempo" min="1" max="240">
+            <input type="number" id="tiempo" name="tiempo" min="1" max="240" value="{{ request.form.tiempo }}">
             <br>
+            
+            {% if error5 %}
+            <p class=error> <strong> Error: </strong> {{ error5 }} </p>
+            {% endif %}
             <label class="correccion" id="r_tiempo"></label>
             <br>
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Enviar formulario">
+
         </form>
 
-        <button class ="boton1" onclick="add()">Enviar</button><br><br>
+       <!-- <button class ="boton1" onclick="add()">Enviar</button><br><br> -->
     </div>
     </main>
 
