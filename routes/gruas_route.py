@@ -62,7 +62,7 @@ class Gruas:
                 if decision == True:
                     confirmation = "Tu formulario fue enviado correctamente"
                     logic.insertFormGrua(usuario, modelo, cantidad, ubicacion, fecha, tiempo, estado)
-                    return redirect(url_for("perfil_cliente"))
+                    return redirect(url_for("gruas"))
 
                 return render_template("form_gruas.html", error1=error1, error2=error2, error3=error3, error4=error4, error5=error5)
                 

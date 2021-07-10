@@ -75,6 +75,7 @@
               <th>Fecha</th>
               <th>Tiempo requerido</th>
               <th>Estado</th>
+              <th>Opciones</th>
 
               {% for grua in dataGruas %}
                 <tr>
@@ -84,7 +85,13 @@
                     <th>{{grua["ubicacion"]}}</th>
                     <th>{{grua["fecha"]}}</th>
                     <th>{{grua["tiempo"]}}</th>
-                    <th>---Iran botones---</th>
+                    <th>{{grua["estado"]}}</th>
+                    <th>
+                      <form action="{{ url_for('admin_gruas') }}" method="POST">
+                        <input class="submit" type="submit" name="submit" value="Aceptar">
+                        <input class="submit" type="submit" name="submit" value="Rechazar">
+                      </form>
+                    </th>
                 </tr>
               {% endfor %}
             </tr>

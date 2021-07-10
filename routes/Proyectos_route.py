@@ -93,7 +93,7 @@ class Proyectos:
                 if decision == True:
                     confirmation = "Tu formulario fue enviado correctamente"
                     logic.insertProyecto(fechai, types, usuario, numero, fecha_inicio, fecha_final, ubicacion, descripcion, estado)
-                    return redirect(url_for("perfil_cliente"))
+                    return redirect(url_for("cotizaciones"))
 
                 return render_template("form_proyectos.html", error1=error1, error2=error2, error3=error3, error4=error4, error5=error5, error6=error6, error7=error7, error8=error8)
 

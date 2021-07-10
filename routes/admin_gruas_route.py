@@ -13,3 +13,4 @@ class Admin_gruas:
                 return render_template("admin_gruas.html", dataGruas=dataGruas)
             elif request.method == "POST":
                 pass
+                
