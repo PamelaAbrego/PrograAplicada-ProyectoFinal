@@ -12,4 +12,9 @@ class Admin_proyectos:
                 dataProyectos = logic.getAllProyectos()
                 return render_template("admin_proyectos.html", dataProyectos=dataProyectos)
             elif request.method == "POST":
-                pass
+                logic = ProyectosLogic()
+                id = request.form["id"]   
+                option = request.form["option"] 
+                logic.changeEstado(id,option)
+                dataProyectos = logic.getAllProyectos()
+                return render_template("admin_proyectos.html", dataProyectos= dataProyectos) 

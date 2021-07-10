@@ -88,7 +88,13 @@
                     <th>{{grua["estado"]}}</th>
                     <th>
                       <form action="{{ url_for('admin_gruas') }}" method="POST">
+                        <input type="hidden" name="id" id="id" value="{{grua['id']}}">
+                        <input type="hidden" name="option" id="option" value="1">
                         <input class="submit" type="submit" name="submit" value="Aceptar">
+                      </form>
+                      <form action="{{ url_for('admin_gruas') }}" method="POST">
+                        <input type="hidden" name="id" id="id" value="{{grua['id']}}">
+                        <input type="hidden" name="option" id="option" value="0">
                         <input class="submit" type="submit" name="submit" value="Rechazar">
                       </form>
                     </th>

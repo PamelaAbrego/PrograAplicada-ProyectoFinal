@@ -1,6 +1,5 @@
 from flask import redirect, render_template, request, session
 from logic.formGruas_logic import GruasLogic
-import bcrypt
 
 class Admin_gruas:
     @staticmethod
@@ -12,5 +11,9 @@ class Admin_gruas:
                 dataGruas = logic.getAllFormGruas()
                 return render_template("admin_gruas.html", dataGruas=dataGruas)
             elif request.method == "POST":
-                pass
-                
+                logic = GruasLogic()
+                id = request.form["id"]   
+                option = request.form["option"] 
+                logic.changeEstado(id,option)
+                dataGruas = logic.getAllFormGruas()
+                return render_template("admin_gruas.html", dataGruas= dataGruas)             
