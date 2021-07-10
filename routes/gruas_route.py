@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request, session, url_for
 from logic.formGruas_logic import GruasLogic
 import bcrypt
 
@@ -56,7 +56,7 @@ class Gruas:
                 if decision == True:
                     confirmation = "Tu formulario fue enviado correctamente"
                     logic.insertFormGrua(usuario, modelo, cantidad, ubicacion, fecha, tiempo, estado)
-                    return render_template("perfil_cliente.html", confirmation=confirmation)
+                    return redirect(url_for("perfil_cliente"))
 
                 return render_template("form_gruas.html", error1=error1, error2=error2, error3=error3, error4=error4, error5=error5)
                 

@@ -5,7 +5,7 @@ import bcrypt
 class Admin_gruas:
     @staticmethod
     def configure_routes(app):
-        @app.route("/admin_gruas.html", methods=["GET", "POST"])
+        @app.route("/admin_gruas", methods=["GET", "POST"])
         def admin_gruas():
             if request.method == "GET":
                 logic = GruasLogic()

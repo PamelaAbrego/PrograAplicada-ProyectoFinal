@@ -89,7 +89,8 @@
                                 <th>Fecha de inicio</th>
                                 <th>Fecha final</th>
                                 <th>Ubicación proyecto</th>
-                                <th> Estado </th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
 
                                 {% for proyecto in dataProyectos %}
                             <tr>
@@ -99,6 +100,7 @@
                                 <th>{{proyecto["fecha_inicio"]}}</th>
                                 <th>{{proyecto["fecha_final"]}}</th>
                                 <th>{{proyecto["ubicacion"]}}</th>
+                                <th>{{proyecto["descripcion"]}}</th>
                                 <th>---Iran botones---</th>
                             </tr>
                         {% endfor %}

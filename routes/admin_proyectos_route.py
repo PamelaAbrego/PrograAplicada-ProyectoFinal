@@ -5,7 +5,7 @@ import bcrypt
 class Admin_proyectos:
     @staticmethod
     def configure_routes(app):
-        @app.route("/admin_proyectos.html", methods=["GET", "POST"])
+        @app.route("/admin_proyectos", methods=["GET", "POST"])
         def admin_proyectos():
             if request.method == "GET":
                 logic = ProyectosLogic()
