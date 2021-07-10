@@ -78,3 +78,4 @@ class UsuariosLogic(PybaLogic):
         else:
             return []
 
+

@@ -6,10 +6,16 @@ import bcrypt
 class Gruas:
     @staticmethod
     def configure_routes(app):
-        @app.route("/gruas", methods=["GET"])
+        @app.route("/gruas", methods=["GET", "POST"])
         def gruas():
             if request.method == "GET":
                 return render_template("gruas.html")
+            elif request.method == "POST":
+                role = session["login_role"]
+                if role == "Cliente":
+                    return redirect("perfil_cliente")
+                if role == "Administrador":
+                    return redirect("perfil_admin")
 
         @app.route("/form_gruas", methods=["GET", "POST"])
         def form_gruas():

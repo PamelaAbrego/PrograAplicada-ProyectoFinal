@@ -10,6 +10,7 @@ from routes.Proyectos_route import Proyectos
 from routes.gruas_route import Gruas
 from routes.admin_gruas_route import Admin_gruas
 from routes.admin_proyectos_route import Admin_proyectos
+from routes.principal_route import Principal
 
 app = Flask(__name__)
 app.secret_key = "VibranioProyecto123!!"
@@ -23,16 +24,12 @@ Proyectos.configure_routes(app)
 Gruas.configure_routes(app)
 Admin_gruas.configure_routes(app)
 Admin_proyectos.configure_routes(app)
+Principal.configure_routes(app)
 
 
 @app.route("/")
 def home():
     return render_template("index.html")
-
-
-@app.route("/principal")
-def principal():
-    return render_template("principal.html")
 
 
 @app.route("/contacto")
@@ -45,9 +42,9 @@ def capacitaciones():
     return render_template("capacitaciones.html")
 
 
-@app.route("/cotizaciones")
-def cotizaciones():
-    return render_template("cotizaciones.html")
+@app.route("/proyectos")
+def proyectos():
+    return render_template("proyectos.html")
 
 
 @app.route("/mision_vision")

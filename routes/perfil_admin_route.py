@@ -15,7 +15,7 @@ class PerfilAdmin:
             elif request.method == "POST":
                 logic = UsuariosLogic()
                 user = request.form["user"]
-                role = request.form["role"]
+                role = request.form.get("Cliente")
                 result = logic.checkUser(user)
                 if len(result) == 0:
                     email = request.form["email"]
@@ -30,8 +30,7 @@ class PerfilAdmin:
                         rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
                         flash("**Usuario ingresado correctamente**", "perfil_admin")
                     else:
-                        flash("No pudimos verificar las credenciales", "perfil_admin")
-                        flash("Verifica que los datos esten correctos", "perfil_admin")
+                        flash("Las contraseñas no coinciden.", "perfil_admin")
                 else:
                     flash("**El usuario ya existe**", "perfil_admin")
                     return redirect("perfil_admin")

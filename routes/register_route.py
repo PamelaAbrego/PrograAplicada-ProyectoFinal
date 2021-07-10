@@ -28,9 +28,9 @@ class Register:
                         rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
                         return redirect("login")
                     else:
-                        flash("No pudimos verificar las credenciales", "registro")
-                        flash("Verifica que los datos esten correctos", "registro")
+                        flash("Las contraseñas ingresadas no coinciden.", "registro")
                         return redirect("register")
                 else:
+                    flash("El usuario ya existe.", "registro")
                     return redirect("register")
             return redirect("login")

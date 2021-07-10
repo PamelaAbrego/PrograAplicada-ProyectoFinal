@@ -15,12 +15,14 @@ class Login:
                 userName = request.form["user"]
                 password = request.form["password"]
                 userDict = logic.getUserByName(userName)
+                role = userDict["role"]
                 salt = userDict["salt"].encode("utf-8")
                 hashPasswd = bcrypt.hashpw(password.encode("utf-8"), salt)
                 dbPasswd = userDict["password"].encode("utf-8")
                 if hashPasswd == dbPasswd:
                     session["login_user"] = userName
                     session["login_email"] = logic.getEmailByName(userName)
+                    session["login_role"] = role
                     session["loggedIn"] = True
                     return redirect("principal")
                 else:

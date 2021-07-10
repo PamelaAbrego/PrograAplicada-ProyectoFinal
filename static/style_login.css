@@ -47,7 +47,8 @@ main{
     margin-bottom: 20px;
     color: gold;
 }
-.contenedorLoginRegister  input{
+
+.cajas{
     width: 90%;
     margin-top: 20px;
     padding: 10px;

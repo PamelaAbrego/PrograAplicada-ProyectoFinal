@@ -16,23 +16,43 @@
     <div class="contenedorLoginRegister">
         <h2>Registrarse</h2>
 
-        
+        <style>
+            .error {
+                color: red;
+            }
+
+            .submit {
+                    text-decoration: none;
+                    padding: 10px;
+                    font-weight: 300;
+                    font-size: 20px;
+                    color: #ffffff;
+                    background-color: #1e2b4e;
+                    border-radius: 6px;
+                    border: 2px solid #ffffff;
+                }
+
+            .submit:hover {
+                color: #1e2b4e;
+                background-color: #ffffff;
+            }
+        </style>
 
         <form action="{{ url_for('register') }}" method="POST">
             <label class="blanco" for="user">Username:</label>
-            <input type="text" name="user" id="user">
+            <input class="cajas" type="text" name="user" id="user">
             <br><br>
 
             <label class="blanco" for="email">Email:</label>
-            <input type="text" name="email" id="email">
+            <input class="cajas" type="text" name="email" id="email">
             <br><br>
 
             <label class="blanco" for="password">Contraseña:</label>
-            <input type="password" name="password" id="password">
+            <input class="cajas" type="password" name="password" id="password">
             <br><br>
 
             <label class="blanco" for="confPassword">Confirmar contraseña:</label>
-            <input type="password" name="confPassword" id="confPassword">
+            <input class="cajas" type="password" name="confPassword" id="confPassword">
             <br><br>
 
             <input class="submit" type="submit" name="submit" value="Send">
@@ -45,7 +65,7 @@
 
                 {% for category, message in messages %}
 
-                <p>{{message}}</p>
+                <p class="error">{{message}}</p>
 
                 {% endfor %}
 
@@ -53,7 +73,6 @@
 
             {% endwith %}
         </form>
-
 
     </div>
 </body>

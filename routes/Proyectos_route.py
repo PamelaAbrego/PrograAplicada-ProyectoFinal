@@ -6,10 +6,16 @@ import bcrypt
 class Proyectos:
     @staticmethod
     def configure_routes(app):
-        @app.route("/proyectos", methods=["GET"])
-        def proyectos():
+        @app.route("/cotizaciones", methods=["GET", "POST"])
+        def cotizaciones():
             if request.method == "GET":
-                return render_template("proyectos.html")
+                return render_template("cotizaciones.html")
+            elif request.method == "POST":
+                role = session["login_role"]
+                if role == "Cliente":
+                    return redirect("perfil_cliente")
+                if role == "Administrador":
+                    return redirect("perfil_admin")
 
         @app.route("/form_proyectos", methods=["GET", "POST"])
         def form_proyectos():
