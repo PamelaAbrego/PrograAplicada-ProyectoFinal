@@ -36,6 +36,10 @@
                     color: #1e2b4e;
                     background-color: #ffffff;
                 }
+
+                .mensaje {
+                    color: red;
+                }
             </style>
 
             <form action="{{ url_for('login') }}" method="POST">
@@ -49,13 +53,14 @@
 
                 <input class="submit" type="submit" name="submit" value="Send">
 
+            <br>
             {% with messages = get_flashed_messages(with_categories = true, category_filter=["login"]) %}
 
             {% if messages %}
 
                 {% for category, message in messages %}
 
-                <p>{{message}}</p>
+                <p class="mensaje">{{message}}</p>
 
                 {% endfor %}
 
