@@ -33,6 +33,29 @@
       </div>
       <!-- end loader -->
       <!-- END LOADER -->
+
+      <style>
+         .error {
+             color: red;
+        }
+ 
+         .submit {
+             text-decoration: none;
+             padding: 10px;
+             font-weight: 300;
+             font-size: 20px;
+             color: #ffffff;
+             background-color: gray;
+             border-radius: 6px;
+             border: 2px solid #ffffff;
+         }
+ 
+         .submit:hover {
+             color: #1e2b4e;
+             background-color: gold;
+         }
+     </style>
+
       <header class="header header_style_01">
          <nav class="megamenu navbar navbar-default" data-spy="affix">
             <div class="top-header">
@@ -77,6 +100,15 @@
                      <li><a data-scroll href="#testimonials">Testimonios</a></li>
                      <li><a data-scroll href="#mision">Misión y Visión</a></li>
                      <li><a data-scroll href="#contact">Contáctanos</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                     <li><a href="{{url_for('gruas')}}" name=" navbar_a" id="navbar_a">Alquiler de Grúas</a></li>
+                     <li><a href="{{url_for('cotizaciones')}}" name=" navbar_a" id="navbar_a">Cotizaciones</a></li>
+                     <li>
+                        <form action="{{ url_for('principal') }}" method="POST" >
+                           <input class="submit" type="submit" name="submit" value="Mi Perfil">
+                        </form>
+                     </li>
                   </ul>
                </div>
             </div>
