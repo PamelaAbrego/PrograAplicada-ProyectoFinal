@@ -11,6 +11,8 @@ from routes.gruas_route import Gruas
 from routes.admin_gruas_route import Admin_gruas
 from routes.admin_proyectos_route import Admin_proyectos
 from routes.principal_route import Principal
+from routes.registro_usuarios_route import RegistroUsuarios
+from routes.modificar_grua_route import Modificar_gruas
 
 app = Flask(__name__)
 app.secret_key = "VibranioProyecto123!!"
@@ -25,6 +27,8 @@ Gruas.configure_routes(app)
 Admin_gruas.configure_routes(app)
 Admin_proyectos.configure_routes(app)
 Principal.configure_routes(app)
+RegistroUsuarios.configure_routes(app)
+Modificar_gruas.configure_routes(app)
 
 
 @app.route("/")

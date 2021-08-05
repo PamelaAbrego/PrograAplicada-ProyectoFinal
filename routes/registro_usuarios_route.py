@@ -3,15 +3,15 @@ from logic.usuarios_logic import UsuariosLogic
 import bcrypt
 
 
-class PerfilAdmin:
+class RegistroUsuarios:
     @staticmethod
     def configure_routes(app):
-        @app.route("/perfil_admin", methods=["GET", "POST"])
-        def perfil_admin():
+        @app.route("/registro_usuarios", methods=["GET", "POST"])
+        def registro_usuarios():
             if request.method == "GET":
                 logic = UsuariosLogic()
                 dataUsers = logic.getAllUsers()
-                return render_template("perfil_admin.html", user = session["login_user"], email= session["login_email"], dataUsers=dataUsers)
+                return render_template("registro_usuarios.html", user = session["login_user"], email= session["login_email"], dataUsers=dataUsers)
             elif request.method == "POST":
                 logic = UsuariosLogic()
                 user = request.form["user"]
@@ -28,12 +28,12 @@ class PerfilAdmin:
                         hashPasswd = bcrypt.hashpw(encPassword, salt)
                         strPasswd = hashPasswd.decode("utf-8")
                         rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
-                        flash("**Usuario ingresado correctamente**", "perfil_admin")
-                        return redirect("perfil_admin")
+                        flash("**Usuario ingresado correctamente**", "registro_usuarios")
+                        return redirect("registro_usuarios")
                     else:
-                        flash("Las contraseñas no coinciden.", "perfil_admin")
-                        return redirect("perfil_admin")
+                        flash("Las contraseñas no coinciden.", "registro_usuarios")
+                        return redirect("registro_usuarios")
                 else:
-                    flash("**El usuario ya existe**", "perfil_admin")
-                    return redirect("perfil_admin")
-            return redirect("perfil_admin")
+                    flash("**El usuario ya existe**", "registro_usuarios")
+                    return redirect("registro_usuarios")
+            return redirect("registro_usuarios")

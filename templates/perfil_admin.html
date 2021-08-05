@@ -49,21 +49,7 @@
                         <br>
                         <h1 class="main__title">Registros de Usuarios</h1>
                         <br>
-                        <table id="tabla" class="admintbl" name="Registros" style="width:90%" border="1">
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Correo</th>
-                                <th>Rol</th>
-
-                                {% for user in dataUsers %}
-                                <tr>
-                                    <th>{{user["user"]}}</th>
-                                    <th>{{user["email"]}}</th>
-                                    <th>{{user["role"]}}</th>
-                                </tr>
-                                {% endfor %}
-                            </tr>
-                        </table>
+                        <a href="{{url_for('registro_usuarios')}}" class="submit">Ver Usuarios</a>
                         <br>
                     </div>
 
@@ -85,61 +71,6 @@
                         }
                     </style>
 
-                    <div class="form_usuarios_total">
-                        <style>
-                            .correccion {
-                                color: red;
-                            }
-                        </style>
-
-                        <h1 class="main__title">Agregar un Usuario</h1>
-                        <br>
-                        <div class="contenedorForm">
-                            <form action="{{ url_for('perfil_admin') }}" method="POST">
-                                <label class="blanco" for="user">Username:</label>
-                                <input type="text" name="user" id="user">
-                                <br><br>
-
-                                <label class="blanco" for="email">Email:</label>
-                                <input type="text" name="email" id="email">
-                                <br><br>
-
-                                <label class="blanco" for="password">Contraseña:</label>
-                                <input type="password" name="password" id="password">
-                                <br><br>
-
-                                <label class="blanco" for="confPassword">Confirmar contraseña:</label>
-                                <input type="password" name="confPassword" id="confPassword">
-                                <br><br>
-                                
-                                <p class="blanco"> Rol: </p>
-                                <input type="radio" id="Cliente" name="Cliente" value="Cliente" checked="checked">
-                                <label for "ClienteNat"> Cliente </label> <br>
-                                <input type="radio" id="Administrador" name="Cliente" value="Administrador">
-                                <label for "ClienteEmp"> Administrador </label>
-                                <br><br>
-                                <input class="submit" type="submit" name="submit" value="Send">
-
-                                <br><br>
-                
-                            </form>
-
-                            {% with messages = get_flashed_messages(with_categories = true, category_filter=["perfil_admin"]) %}
-
-                            {% if messages %}
-
-                                {% for category, message in messages %}
-
-                                <p>{{message}}</p>
-
-                                {% endfor %}
-
-                            {% endif %}
-
-                            {% endwith %}
-                        </div>
-
-                    </div>
                     <br>
                     <h1 class="main__title">Registros de Alquileres de Grúas</h1>
                     <br>
@@ -176,19 +107,19 @@
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <a href="{{url_for('mision_vision')}}">Misión y Visión</a>
+                    
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-wrench"></i>
-                    <a href="{{url_for('proyectos')}}">Proyectos</a>
+                    
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-book"></i>
-                    <a href="{{url_for('capacitaciones')}}">Capacitaciones</a>
+                    
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-address-book-o o" aria-hidden="true"></i>
-                    <a href="{{url_for('contacto')}}">Contáctanos</a>
+                    
                 </div>
 
                 <div class="sidebar__logout">

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style_perfil_cliente.css')}}">
+    <title>Registro Usuarios</title>
+</head>
+<body>
+    <div class="alquileres">
+        <br>
+        <div class="form_usuarios_total">
+            <style>
+                .correccion {
+                    color: red;
+                }
+            </style>
+    
+            <h1 class="main__title">Agregar un Usuario</h1>
+            <br>
+            <div class="contenedorForm">
+                <form action="{{ url_for('registro_usuarios') }}" method="POST">
+                    <label class="blanco" for="user">Username:</label>
+                    <input type="text" name="user" id="user">
+                    <br><br>
+    
+                    <label class="blanco" for="email">Email:</label>
+                    <input type="text" name="email" id="email">
+                    <br><br>
+    
+                    <label class="blanco" for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password">
+                    <br><br>
+    
+                    <label class="blanco" for="confPassword">Confirmar contraseña:</label>
+                    <input type="password" name="confPassword" id="confPassword">
+                    <br><br>
+                    
+                    <p class="blanco"> Rol: </p>
+                    <input type="radio" id="Cliente" name="Cliente" value="Cliente" checked="checked">
+                    <label for "ClienteNat"> Cliente </label> <br>
+                    <input type="radio" id="Administrador" name="Cliente" value="Administrador">
+                    <label for "ClienteEmp"> Administrador </label>
+                    <br><br>
+                    <input class="submit" type="submit" name="submit" value="Agregar">
+    
+                    <br><br>
+    
+                </form>
+    
+                {% with messages = get_flashed_messages(with_categories = true, category_filter=["registro_usuarios"]) %}
+    
+                {% if messages %}
+    
+                    {% for category, message in messages %}
+    
+                    <p>{{message}}</p>
+    
+                    {% endfor %}
+    
+                {% endif %}
+    
+                {% endwith %}
+            </div>
+    
+        </div>
+        <h1 class="main__title">TABLA DE USUARIOS</h1>
+        <br>
+        <table id="tabla" class="admintbl" name="Registros" style="width:90%" border="1">
+            <tr>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Rol</th>
+
+                {% for user in dataUsers %}
+                <tr>
+                    <th>{{user["user"]}}</th>
+                    <th>{{user["email"]}}</th>
+                    <th>{{user["role"]}}</th>
+                </tr>
+                {% endfor %}
+            </tr>
+        </table>
+
+        <style>
+            .submit {
+                text-decoration: none;
+                padding: 10px;
+                font-weight: 300;
+                font-size: 20px;
+                color: #ffffff;
+                background-color: #1e2b4e;
+                border-radius: 6px;
+                border: 2px solid #ffffff;
+            }
+
+            .submit:hover {
+                color: #1e2b4e;
+                background-color: #ffffff;
+            }
+        </style>
+        <br>
+    </div>
+
+</body>
+</html>

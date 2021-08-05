@@ -19,13 +19,13 @@ class GruasLogic(PybaLogic):
         database = self.databaseObj
         sql = f"SELECT * FROM comsedi.form_gruas where id = {id};"
         result = database.executeQuery(sql)
-        return result
+        return result[0]
 
     def updateFormGrua(self, id, formGrua):
         database = self.databaseObj
         sql = (
             "UPDATE `comsedi`.`form_gruas` "
-            + f"SET `usuario` = '{formGrua['usuario']}', `modelo` = '{formGrua['modelo']}', `cantidad` = '{formGrua['cantidad']}', `ubicacion` = '{formGrua['ubicacion']}', `fecha` = '{formGrua['fecha']}', `tiempo` = '{formGrua['tiempo']}', `estado` = '{formGrua['estado']}' "
+            + f"SET `modelo` = '{formGrua['modelo']}', `cantidad` = '{formGrua['cantidad']}', `ubicacion` = '{formGrua['ubicacion']}', `fecha` = '{formGrua['fecha']}', `tiempo` = '{formGrua['tiempo']}', `comentario` = '{formGrua['comentario']}' ,`estado` = '{formGrua['estado']}' "
             + f"WHERE `id` = {id};"
         )
         rows = database.executeNonQueryRows(sql)
