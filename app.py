@@ -31,27 +31,5 @@ Principal.configure_routes(app)
 def home():
     return render_template("index.html")
 
-
-@app.route("/contacto")
-def contacto():
-    return render_template("contacto.html")
-
-
-@app.route("/capacitaciones")
-def capacitaciones():
-    return render_template("capacitaciones.html")
-
-
-@app.route("/proyectos")
-def proyectos():
-    return render_template("proyectos.html")
-
-
-@app.route("/mision_vision")
-def mision_vision():
-    return render_template("mision_vision.html")
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
