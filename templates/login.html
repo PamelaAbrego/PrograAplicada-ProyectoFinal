@@ -5,70 +5,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../static/style_login.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
     <main>
-        <div class="contenedorLoginRegister">
-            <h2>Iniciar Sesión</h2>
-            <style>
-                .error {
-                    color: red;
-                }
+        <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('/static/uploads/building/slide-img1.png');">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 text-center">
+                    <div class="big-tagline">
+                        <h2 class="no">REGISTRO</h2>
+                        <div class="contenedorLoginRegister">
+                            <h1 class="titulo">------------------------</h1>
+                            <h1 class="titulo">INICIAR SESIÓN</h1>
+                            <h1 class="titulo">------------------------</h1>
+                            <form action="{{ url_for('login') }}" method="POST">
+                                <label class="blanco" for="user">Usuario</label>
+                                <input class="cajas" type="text" name="user" id="user">
+                                <br><br>
 
-                .submit {
-                        text-decoration: none;
-                        padding: 10px;
-                        font-weight: 300;
-                        font-size: 20px;
-                        color: #ffffff;
-                        background-color: #1e2b4e;
-                        border-radius: 6px;
-                        border: 2px solid #ffffff;
-                    }
+                                <label class="blanco" for="password">Contraseña</label>
+                                <input class="cajas" type="password" name="password" id="password">
+                                <br><br>
+                                <div style="text-align: center;" class="g-recaptcha" data-sitekey="6LczYSkbAAAAALn5X-bjSDdl3xG64txLZpKuUBaW"></div>                
+                                <br>
+                                <input class="submit" type="submit" name="submit" value="Send">
 
-                .submit:hover {
-                    color: #1e2b4e;
-                    background-color: #ffffff;
-                }
+                            <br>
+                            {% with messages = get_flashed_messages(with_categories = true, category_filter=["login"]) %}
 
-                .mensaje {
-                    color: red;
-                }
-            </style>
+                            {% if messages %}
 
-            <form action="{{ url_for('login') }}" method="POST">
-                <label class="blanco" for="user">Usuario:</label>
-                <input class="cajas" type="text" name="user" id="user">
-                <br><br>
+                                {% for category, message in messages %}
 
-                <label class="blanco" for="password">Contraseña:</label>
-                <input class="cajas" type="password" name="password" id="password">
-                <br><br>
+                                <p class="error">{{message}}</p>
 
-                <input class="submit" type="submit" name="submit" value="Send">
+                                {% endfor %}
 
-            <br>
-            {% with messages = get_flashed_messages(with_categories = true, category_filter=["login"]) %}
+                            {% endif %}
 
-            {% if messages %}
-
-                {% for category, message in messages %}
-
-                <p class="mensaje">{{message}}</p>
-
-                {% endfor %}
-
-            {% endif %}
-
-            {% endwith %}
-            </form>
+                            {% endwith %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <style>
+            .no {
+                opacity: 0%;
+            }
+            .yellow {
+                color: #e8a900;
+            }
+
+            .titulo {
+                color: black;
+                text-align: center;
+                font-weight: bold;
+                font-size: 32px;
+                opacity: 100%;
+            }
+            .contenedorLoginRegister{
+                align-items: center;
+                width: 550px;
+                height: 550px;
+                background: goldenrod;
+                border-radius: 20px;
+                position: absolute;
+                top:50%;
+                left: 50%;           
+                margin-top: -275px;
+                margin-left: -275px;
+                opacity: 80%;
+                text-align: center;
+            }
+
+            .error {
+                color: red;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .submit {
+                    text-decoration: none;
+                    padding: 10px;
+                    font-weight: 300;
+                    font-size: 20px;
+                    color: rgb(66, 66, 66);
+                    background-color: gold;
+                    border-radius: 6px;
+                    border: 2px solid rgb(66, 66, 66);
+            }
+
+            .submit:hover {
+                color: gold;
+                background-color: rgb(66, 66, 66);
+            }
+
+            .contenedorLoginRegister .cajas{
+                width: 90%;
+                margin-top: 10px;
+                padding: 7px;
+                border: none;
+                background: #ffffff;
+                font-size: 20px;
+                outline: none;
+                border-radius: 20px;
+                text-align: center;
+                color: rgb(66, 66, 66);
+            }
+        
+            .g-recaptcha {
+                display: inline-block;
+            }
+
+            .blanco {
+                font-size: 20px;
+                color: rgb(66, 66, 66);
+            }
+        </style>
     </main>
     <script src="{{url_for('static', filename='script_login.js')}}"></script>
 </body>

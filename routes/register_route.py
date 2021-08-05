@@ -28,17 +28,21 @@ class Register:
                             email = request.form["email"]
                             passwd = request.form["password"]
                             confPasswd = request.form["confPassword"]
-                            if passwd == confPasswd:
-                                salt = bcrypt.gensalt(rounds=8)
-                                strsalt = salt.decode("utf-8")
-                                encPassword = passwd.encode("utf-8")
-                                hashPasswd = bcrypt.hashpw(encPassword, salt)
-                                strPasswd = hashPasswd.decode("utf-8")
-                                rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
-                                return redirect("login")
-                            else:
-                                flash("Las contraseñas ingresadas no coinciden.", "registro")
+                            if len(user) == 0 or len(email) == 0 or len(passwd) == 0 or len(confPasswd)==0:
+                                flash("Todos los campos son obligatorios.", "registro")
                                 return redirect("register")
+                            else:
+                                if passwd == confPasswd:
+                                    salt = bcrypt.gensalt(rounds=8)
+                                    strsalt = salt.decode("utf-8")
+                                    encPassword = passwd.encode("utf-8")
+                                    hashPasswd = bcrypt.hashpw(encPassword, salt)
+                                    strPasswd = hashPasswd.decode("utf-8")
+                                    rows = logic.insertUsuario(user, email, role, strPasswd, strsalt)
+                                    return redirect("login")
+                                else:
+                                    flash("Las contraseñas ingresadas no coinciden.", "registro")
+                                    return redirect("register")
                         else:
                             flash("El usuario ya existe.", "registro")
                             return redirect("register")
