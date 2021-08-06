@@ -13,6 +13,10 @@ from routes.admin_proyectos_route import Admin_proyectos
 from routes.principal_route import Principal
 from routes.registro_usuarios_route import RegistroUsuarios
 from routes.modificar_grua_route import Modificar_gruas
+from routes.construccion_materiales_route import ConstruccionMateriales
+from routes.poda_materiales_route import PodaMateriales
+from routes.electricidad_materiales_route import ElectricidadMateriales
+from routes.modificar_proyecto_routes import Modificar_proyecto
 
 app = Flask(__name__)
 app.secret_key = "VibranioProyecto123!!"
@@ -29,11 +33,18 @@ Admin_proyectos.configure_routes(app)
 Principal.configure_routes(app)
 RegistroUsuarios.configure_routes(app)
 Modificar_gruas.configure_routes(app)
+ConstruccionMateriales.configure_routes(app)
+PodaMateriales.configure_routes(app)
+ElectricidadMateriales.configure_routes(app)
+Modificar_proyecto.configure_routes(app)
 
 
 @app.route("/")
 def home():
     return render_template("index.html")
+
+def index_materiales():
+    return render_template("index_materiales.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

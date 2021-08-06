@@ -44,15 +44,16 @@
              padding: 10px;
              font-weight: 300;
              font-size: 20px;
-             color: #ffffff;
-             background-color: gray;
+             color: black;
+             background-color: gold;
              border-radius: 6px;
-             border: 2px solid #ffffff;
+             border: 2px solid rgba(0, 0, 0, 0.74);
          }
  
          .submit:hover {
-             color: #1e2b4e;
-             background-color: gold;
+             color: black;
+             background-color: rgb(255, 235, 119);
+             border: 2px solid rgba(0, 0, 0, 0.664);
          }
      </style>
 
@@ -163,6 +164,8 @@
                         </div>
                         <h3>Poda</h3>
                         <p>Podar es el proceso de recortar un árbol o arbusto. Hecho con cuidado y correctamente, la poda puede incrementar el rendimiento del fruto; así, es una práctica agrícola común. En producción forestal se emplea para obtener fustes más rectos y con menos ramificaciones, por tanto de mayor calidad.</p>
+                        <br>
+                        <a class="submit" href="{{url_for('poda_materiales')}}">Ver Materiales</a>
                      </div>
                      <!-- end service -->
                   </div>
@@ -176,6 +179,8 @@
                         </div>
                         <h3>Construcción</h3>
                         <p>En los campos de la arquitectura e ingeniería, la construcción es el arte o técnica de fabricar edificios e infraestructuras. En un sentido más amplio, se denomina construcción a todo aquello que exige, antes de hacerse, disponer de un proyecto y una planificación predeterminada.</p>
+                        <br>
+                        <a class="submit" href="{{url_for('construccion_materiales')}}"">Ver Materiales</a>
                      </div>
                      <!-- end service -->
                   </div>
@@ -189,6 +194,8 @@
                         </div>
                         <h3>Electricidad</h3>
                         <p>Una instalación eléctrica es el conjunto de circuitos eléctricos que tiene como objetivo dotar de energía eléctrica a edificios, instalaciones, lugares públicos, infraestructuras, etc. Incluye los equipos necesarios para asegurar su correcto funcionamiento y la conexión con los aparatos eléctricos correspondientes.</p>
+                        <br>
+                        <a class="submit" href="{{url_for('electricidad_materiales')}}">Ver Materiales</a>
                      </div>
                      <!-- end service -->
                   </div>

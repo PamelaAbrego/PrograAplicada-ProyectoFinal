@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Proyectos</title>
+</head>
+<body>
+    <div class="main__container">
+
+        <div class="main__title">
+            <h1>TABLA DE COTIZACIONES</h1>
+        </div>
+        <br>
+
+        <style>
+            .boton1 {
+                text-decoration: none;
+                padding: 10px;
+                font-weight: 300;
+                font-size: 20px;
+                color: #ffffff;
+                background-color: #1e2b4e;
+                border-radius: 6px;
+                border: 2px solid #ffffff;
+            }
+
+            .boton1:hover {
+                color: #1e2b4e;
+                background-color: #ffffff;
+            }
+
+            .tabla {
+                text-align: center;
+            }
+        </style>
+
+        <h3 style="color: black;"> Estas son las cotizaciones pendientes: </h3>
+        <br>
+
+        <body onload="loadAddDataFromAllUsers()">
+            <script src="{{url_for('static', filename='script_admin_cot.js')}}"></script>
+        </body>
+
+        <table class="tabla" style="color: black;" id="userTableClient" style="width:90%" border="1">
+            <tr>
+                <th>ID</th>
+                <th> Tipo de cotización</th>
+                <th> Usuario </th>
+                <th> Número telefónico </th>
+                <th> Fecha entrega</th>
+                <th> Fecha devolución </th>
+                <th> Ubicación proyecto </th>
+                <th> Descripción proyecto </th>
+                <th>Comentario</th>
+                <th> Estado </th>
+
+                {% for proyecto in dataProyectos %}
+                    <tr>
+                        <th>{{proyecto["id"]}}</th>
+                        <th>{{proyecto["tipo"]}}</th>
+                        <th>{{proyecto["usuario"]}}</th>
+                        <th>{{proyecto["numero"]}}</th>
+                        <th>{{proyecto["fecha_inicio"]}}</th>
+                        <th>{{proyecto["fecha_final"]}}</th>
+                        <th>{{proyecto["ubicacion"]}}</th>
+                        <th>{{proyecto["descripcion"]}}</th>
+                        <th>{{proyecto["comentario"]}}</th>
+                        <th>{{proyecto["estado"]}}</th>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+        <br>
+        <div class="main__title">
+            <h1>MODIFICAR UNA COTIZACIÓN</h1>
+          </div>
+          <form action="{{ url_for('modificar_proyecto') }}" method="post">
+            <p> <b>ID a modificar:</b> </p>
+            <input type="number" name="id" id="id" min="1">
+            <p> <b> Tipo de cotización </b> </p>
+            <input type="checkbox" id="Eléctrico" name="Coti" value="Eléctrico">
+            <label for "CotiCivil"> Eléctrico </label> <br>
+            <input type="checkbox" id="Civil" name="Coti" value="Civil">
+            <label for "CotiCivil"> Civil </label> <br>
+            <input type="checkbox" id="Poda" name="Coti" value="Poda">
+            <label for "CotiPoda"> Poda </label>
+            <br>
+            <br>
+            <label for "fphone"> <b> Número telefónico (sin guión) </b> </label>
+            <input type="number" id="fphone" name="fphone" placeholder="..." size="40">
+            <!-- <p id="sPhone" class="correcion"> </p> -->
+            
+            <br>
+            <br>
+            <label for "datemin"> <b> Fecha de inicio </b> </label>
+            <input type="date" id="datemin" name="datemin" >
+            <br>
+            <!-- <p id="sDate1" class="correcion"> </p> -->
+            <br>
+            <label for "date"> <b> Fecha final </b> </label>
+            <input type="date" id="datef" name="date">
+            <!-- <p id="sDate2" class="correcion"> </p> -->
+            <br><br>
+            <label for "floc"> <b> Ubicación del proyecto </b> </label>
+            <input type="text" id="floc" name="floc" placeholder="Departamento, municipio, calle" size="40">
+            <!-- <p id="sLoc" class="correcion"> </p> -->
+            <br><br>
+            <label for "detalles"> <b> Descripción del proyecto </b> </label>
+            <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion...">
+            <br><br>
+            <label for "comentario"> <b> Comentario </b> </label>
+            <input type="text" name="comentario" id="comentario" placeholder="Comentario...">
+            <!-- <p id="sDesc" class="correcion"> </p> -->
+            <br><br>
+            <input class="submit" type="submit" value="Modificar">
+        </form>
+    </div>
+</body>
+</html>

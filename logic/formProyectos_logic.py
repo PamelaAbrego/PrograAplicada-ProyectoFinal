@@ -18,13 +18,13 @@ class ProyectosLogic(PybaLogic):
         database = self.databaseObj
         sql = f"SELECT * FROM comsedi.form_servicios where id = {id};"
         result = database.executeQuery(sql)
-        return result
+        return result[0]
 
     def updateProyecto(self, id, proyecto):
         database = self.databaseObj
         sql = (
             "UPDATE `comsedi`.`form_servicios` "
-            + f"SET `fecha_envio` = '{proyecto['fecha_envio']}', `tipo` = '{proyecto['tipo']}', `usuario` = '{proyecto['usuario']}', `numero` = '{proyecto['numero']}', `fecha_inicio` = '{proyecto['fecha_inicio']}', `fecha_final` = '{proyecto['fecha_final']}', `ubicacion` = '{proyecto['ubicacion']}', `descripcion` = '{proyecto['descripcion']}', `estado` = '{proyecto['estado']}' "
+            + f"SET `tipo` = '{proyecto['tipo']}', `numero` = '{proyecto['numero']}', `fecha_inicio` = '{proyecto['fecha_inicio']}', `fecha_final` = '{proyecto['fecha_final']}', `ubicacion` = '{proyecto['ubicacion']}', `descripcion` = '{proyecto['descripcion']}',`comentario` = '{proyecto['comentario']}'"
             + f"WHERE `id` = {id};"
         )
         rows = database.executeNonQueryRows(sql)

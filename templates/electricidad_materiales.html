@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricidad</title>
+</head>
+<body>
+    <h1>ELECTRICIDAD</h1>
+    <h2>Equipo</h2>
+    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+        <tr>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Tienda</th>
+          <th>Link</th>
+
+          {% for item in equipo %}
+            <tr>
+                <th>{{item["producto"]}}</th>
+                <th>{{item["descripcion"]}}</th>
+                <th>{{item["precio"]}}</th>
+                <th>{{item["tienda"]}}</th>
+                <th><a href="{{item['link']}}">Ir</a></th>
+            </tr>
+          {% endfor %}
+        </tr>
+    </table>
+      
+    <h2>Materiales</h2>
+    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+        <tr>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Tienda</th>
+          <th>Link</th>
+
+          {% for item in materiales %}
+            <tr>
+                <th>{{item["producto"]}}</th>
+                <th>{{item["descripcion"]}}</th>
+                <th>{{item["precio"]}}</th>
+                <th>{{item["tienda"]}}</th>
+                <th><a href="{{item['link']}}">Ir</a></th>
+            </tr>
+          {% endfor %}
+        </tr>
+    </table>
+
+    <h2>Herramientas</h2>
+    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+        <tr>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Tienda</th>
+          <th>Link</th>
+
+          {% for item in herramientas %}
+            <tr>
+                <th>{{item["producto"]}}</th>
+                <th>{{item["descripcion"]}}</th>
+                <th>{{item["precio"]}}</th>
+                <th>{{item["tienda"]}}</th>
+                <th><a href="{{item['link']}}">Ir</a></th>
+            </tr>
+          {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>
