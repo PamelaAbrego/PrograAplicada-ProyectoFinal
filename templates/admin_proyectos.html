@@ -81,6 +81,7 @@
                         <th> Fecha devolución </th>
                         <th> Ubicación proyecto </th>
                         <th> Descripción proyecto </th>
+                        <th>Comentario</th>
                         <th> Estado </th>
                         <th> Opciones </th>
 
@@ -94,6 +95,7 @@
                                 <th>{{proyecto["fecha_final"]}}</th>
                                 <th>{{proyecto["ubicacion"]}}</th>
                                 <th>{{proyecto["descripcion"]}}</th>
+                                <th>{{proyecto["comentario"]}}</th>
                                 <th>{{proyecto["estado"]}}</th>
                                 <th>
                                     <form action="{{ url_for('admin_proyectos') }}" method="POST">

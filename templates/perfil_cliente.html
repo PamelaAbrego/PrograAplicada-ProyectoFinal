@@ -60,6 +60,7 @@
                                 <th>Fecha</th>
                                 <th>Tiempo requerido</th>
                                 <th>Estado</th>
+                                <th>Comentario</th>
 
                                 {% for grua in dataGruas %}
                                     <tr>
@@ -69,6 +70,7 @@
                                         <th>{{grua["fecha"]}}</th>
                                         <th>{{grua["tiempo"]}}</th>
                                         <th>{{grua["estado"]}}</th>
+                                        <th>{{grua["comentario"]}}</th>
                                     </tr>
                                 {% endfor %}
                             </tr>
@@ -91,6 +93,7 @@
                                 <th>Ubicación proyecto</th>
                                 <th>Descripción</th>
                                 <th>Estado</th>
+                                <th>Comentario</th>
 
                                 {% for proyecto in dataProyectos %}
                             <tr>
@@ -102,6 +105,7 @@
                                 <th>{{proyecto["ubicacion"]}}</th>
                                 <th>{{proyecto["descripcion"]}}</th>
                                 <th>{{proyecto["estado"]}}</th>
+                                <th>{{proyecto["comentario"]}}</th>
                             </tr>
                         {% endfor %}
                             </tr>
@@ -138,20 +142,16 @@
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <a href="{{url_for('mision_vision')}}">Misión y Visión</a>
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-wrench"></i>
-                    <a href="{{url_for('proyectos')}}">Proyectos</a>
                 </div>
                 <div class="sidebar__link">
                     <i class="fa fa-book"></i>
-                    <a href="{{url_for('capacitaciones')}}">Capacitaciones</a>
                 </div>
             </div>
             <div class="sidebar__link">
                 <i class="fa fa-address-book-o o" aria-hidden="true"></i>
-                <a href="{{url_for('contacto')}}">Contáctanos</a>
             </div>
 
             <div class="sidebar__logout">
