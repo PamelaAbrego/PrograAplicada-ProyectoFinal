@@ -12,7 +12,7 @@ class Modificar_gruas:
                 return render_template("modificar_grua.html", dataGruas=dataGruas)
             elif request.method == "POST":
                 logic = GruasLogic()
-                id = request.form["id"]
+                id = request.form["ID"]
                 modelo = request.form["modelo"]
                 cantidad = request.form["cantidad"]
                 ubicacion = request.form["ubicacion"]
@@ -38,5 +38,4 @@ class Modificar_gruas:
                 formGrua = {"modelo": modelo, "cantidad":cantidad, "ubicacion":ubicacion, "fecha":fecha, "tiempo":tiempo, "comentario":comentario, "estado":estado}
                 logic.updateFormGrua(id, formGrua)
                 dataGruas = logic.getAllFormGruas()
-
-                return render_template("modificar_grua.html", dataGruas= dataGruas)
+                return render_template("admin_gruas.html", dataGruas= dataGruas)

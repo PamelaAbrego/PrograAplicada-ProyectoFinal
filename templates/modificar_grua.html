@@ -8,57 +8,25 @@
 
 </head>
 <body>
-    <div class="main__title">
+    <class class="main__title">
         <h1>MODIFICAR UN ALQUIER</h1>
-      </div>
-      <div class="table">
-        <h3 style="color: #ffffff;">A continuación se presentan los alquileres activos:</h3>
-        <br><br>
-        <table style="color: #ffffff;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
-          <tr>
-            <th>ID</th>
-            <th>Usuario</th>
-            <th>Modelo de grúa</th>
-            <th>Cantidad</th>
-            <th>Ubicación</th>
-            <th>Fecha</th>
-            <th>Tiempo requerido</th>
-            <th>Estado</th>
-            <th>Comentario</th>
-
-            {% for grua in dataGruas %}
-              <tr>
-                  <th>{{grua["id"]}}</th>
-                  <th>{{grua["usuario"]}}</th>
-                  <th>{{grua["modelo"]}}</th>
-                  <th>{{grua["cantidad"]}}</th>
-                  <th>{{grua["ubicacion"]}}</th>
-                  <th>{{grua["fecha"]}}</th>
-                  <th>{{grua["tiempo"]}}</th>
-                  <th>{{grua["estado"]}}</th>
-                  <th>{{grua["comentario"]}}</th>
-              </tr>
-            {% endfor %}
-          </tr>
-        </table><br>
-      </div>
+      </class>
       <form action="{{ url_for('modificar_grua') }}" method="post">
-        <label class="viñeta">ID a modificar:</label>
-        <input type="number" id="id" name="id" min="1"><br>
+        <input type="hidden" name="ID" id="ID" value="{{ grua['id'] }}">
         <label class="viñeta">Modelo:</label>
-        <input type="number" id="modelo" name="modelo" min="1" max="2" value="{{ request.form.modelo }}"><br>
+        <input type="number" id="modelo" name="modelo" min="1" max="2" value="{{ grua['modelo']}}"><br>
         <label class="viñeta">Cantidad de gruas:</label>
-        <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="{{ request.form.cantidad }}"><br>
+        <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="{{ grua['cantidad'] }}"><br>
         <label class="viñeta">Ubicación:</label>
-        <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación..." value="{{ request.form.ubicacion }}"><br>
+        <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación..." value="{{ grua['ubicacion'] }}"><br>
         <label class="viñeta">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" value="{{ request.form.fecha }}"><br>
+        <input type="date" id="fecha" name="fecha" value="{{ grua['fecha'] }}"><br>
         <label class="viñeta">Tiempo requerido(en horas):</label>
-        <input type="number" id="tiempo" name="tiempo" min="1" max="240" value="{{ request.form.tiempo }}"><br>
+        <input type="number" id="tiempo" name="tiempo" min="1" max="240" value="{{ grua['tiempo'] }}"><br>
         <label class="viñeta">Comentario:</label>
-        <input type="text" id="comentario" name="comentario" placeholder="Comentario..." value="{{ request.form.comentario }}"><br>
+        <input type="text" id="comentario" name="comentario" placeholder="Comentario..." value="{{ grua['comentario'] }}"><br>
         <br>
-        <input class="submit" type="submit" value="Enviar formulario">
+        <input class="submit" type="submit" value="Modificar">
 
     </form>
 

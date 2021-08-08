@@ -14,6 +14,20 @@ class Admin_gruas:
                 logic = GruasLogic()
                 id = request.form["id"]   
                 option = request.form["option"] 
-                logic.changeEstado(id,option)
+                if option == "0" or option == "1":
+                    logic.changeEstado(id,option)
+                if option == "Modificar":
+                    id = request.form["id"]
+                    modelo = request.form["modelo"]
+                    cantidad = request.form["cantidad"]
+                    ubicacion = request.form["ubicacion"]
+                    fecha = request.form["fecha"]
+                    tiempo = request.form["tiempo"]
+                    comentario = request.form["comentario"]
+                    grua = dict(id = id, modelo = modelo, cantidad = cantidad, ubicacion = ubicacion, fecha = fecha, tiempo = tiempo, comentario = comentario)
+                    return render_template("modificar_grua.html", grua=grua)
+                if option == "Eliminar":
+                    id = request.form["id"]
+                    logic.deleteFormGrua(id)
                 dataGruas = logic.getAllFormGruas()
                 return render_template("admin_gruas.html", dataGruas= dataGruas)             

@@ -74,9 +74,9 @@
               <th>Ubicación</th>
               <th>Fecha</th>
               <th>Tiempo requerido</th>
-              <th>Estado</th>
               <th>Comentario</th>
-              <th>Opciones</th>
+              <th>Estado</th>
+              <th colspan="3">Opciones</th>
 
               {% for grua in dataGruas %}
                 <tr>
@@ -86,8 +86,8 @@
                     <th>{{grua["ubicacion"]}}</th>
                     <th>{{grua["fecha"]}}</th>
                     <th>{{grua["tiempo"]}}</th>
-                    <th>{{grua["estado"]}}</th>
                     <th>{{grua["comentario"]}}</th>
+                    <th>{{grua["estado"]}}</th>
                     <th>
                       <form action="{{ url_for('admin_gruas') }}" method="POST">
                         <input type="hidden" name="id" id="id" value="{{grua['id']}}">
@@ -100,19 +100,31 @@
                         <input class="submit" type="submit" name="submit" value="Rechazar">
                       </form>
                     </th>
+                    <th>
+                      <form action="{{ url_for('admin_gruas') }}" method="POST">
+                        <input type="hidden" name="id" id="id" value="{{grua['id']}}">
+                        <input type="hidden" name="modelo" id="modelo" value="{{grua['modelo']}}">
+                        <input type="hidden" name="cantidad" id="id" value="{{grua['cantidad']}}">
+                        <input type="hidden" name="ubicacion" id="ubicacion" value="{{grua['ubicacion']}}">
+                        <input type="hidden" name="fecha" id="fecha" value="{{grua['fecha']}}">
+                        <input type="hidden" name="tiempo" id="tiempo" value="{{grua['tiempo']}}">
+                        <input type="hidden" name="comentario" id="comentario" value="{{grua['comentario']}}">
+                        <input type="hidden" name="option" id="option" value="Modificar">
+                        <input class="submit" type="submit" name="submit" value="Modificar">
+                      </form>
+                    </th>
+                    <th>
+                      <form action="{{ url_for('admin_gruas') }}" method="POST">
+                        <input type="hidden" name="id" id="id" value="{{grua['id']}}">
+                        <input type="hidden" name="option" id="option" value="Eliminar">
+                        <input class="submit" type="submit" name="submit" value="Eliminar">
+                      </form>
+                    </th>
                 </tr>
               {% endfor %}
             </tr>
           </table><br>
         </div>
-
-        <div class="main__title">
-          <h1>MODIFICAR UN ALQUIER</h1>
-        </div>
-        <br>
-        <a href="{{url_for('modificar_grua')}}" class="boton1">Modificar</a>
-        <br>
-
       </div>
     </main>
 
