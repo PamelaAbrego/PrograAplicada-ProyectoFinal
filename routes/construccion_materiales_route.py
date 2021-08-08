@@ -1,5 +1,5 @@
 from flask import redirect, render_template, request, session, url_for
-from logic.formGruas_logic import GruasLogic
+from logic.carrito_logic import CarritoLogic
 import bcrypt
 import requests
 
@@ -24,4 +24,10 @@ class ConstruccionMateriales:
                     herramientas = response.json()                
                 return render_template("construccion_materiales.html", equipo=equipo, materiales=materiales, herramientas=herramientas)
             elif request.method == "POST":
-                pass
+                logic = CarritoLogic()
+                usuario = session["login_user"]
+                producto = request.form["producto"]
+                cantidad = int(request.form["cantidad"])
+                precio = int(request.form["precio"])
+                logic.insertCarrito(usuario, producto, precio, cantidad)      
+                return redirect("carrito")

@@ -15,6 +15,8 @@
           <th>Precio</th>
           <th>Tienda</th>
           <th>Link</th>
+          <th>Cantidad</th>
+          <th>Carrito de Compras</th>
 
           {% for item in equipo %}
             <tr>
@@ -23,51 +25,87 @@
                 <th>{{item["precio"]}}</th>
                 <th>{{item["tienda"]}}</th>
                 <th><a href="{{item['link']}}">Ir</a></th>
+                <form action="{{ url_for('construccion_materiales') }}" method="POST">
+                  <th>
+                    <input type="number" name="cantidad" id="cantidad" min="0">
+                    <input type="hidden" name="producto" id="producto" value="{{item['producto']}}">
+                    <input type="hidden" name="precio" id="precio" value="{{item['precio']}}">
+                  </th>
+                  <th>
+                    <input type="submit" name="submit" id="submit" value="Agregar">
+                  </th>
+                </form>
             </tr>
           {% endfor %}
         </tr>
     </table>
       
     <h2>Materiales</h2>
-    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
-        <tr>
-          <th>Producto</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Tienda</th>
-          <th>Link</th>
+    
+      <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+          <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Tienda</th>
+            <th>Link</th>
+            <th>Cantidad</th>
+            <th>Carrito de Compras</th>
 
-          {% for item in materiales %}
-            <tr>
-                <th>{{item["producto"]}}</th>
-                <th>{{item["descripcion"]}}</th>
-                <th>{{item["precio"]}}</th>
-                <th>{{item["tienda"]}}</th>
-                <th><a href="{{item['link']}}">Ir</a></th>
-            </tr>
-          {% endfor %}
-        </tr>
-    </table>
+            {% for item in materiales %}
+              <tr>
+                  <th>{{item["producto"]}}</th>
+                  <th>{{item["descripcion"]}}</th>
+                  <th>{{item["precio"]}}</th>
+                  <th>{{item["tienda"]}}</th>
+                  <th><a href="{{item['link']}}">Ir</a></th>
+                  <form action="{{ url_for('construccion_materiales') }}" method="POST">
+                    <th>
+                      <input type="number" name="cantidad" id="cantidad" min="0">
+                      <input type="hidden" name="producto" id="producto" value="{{item['producto']}}">
+                      <input type="hidden" name="precio" id="precio" value="{{item['precio']}}">
+                    </th>
+                    <th>
+                      <input type="submit" name="submit" id="submit" value="Agregar">
+                    </th>
+                  </form>
+              </tr>
+            {% endfor %}
+          </tr>
+      </table>
 
-    <h2>Herramientas</h2>
-    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
-        <tr>
-          <th>Producto</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Tienda</th>
-          <th>Link</th>
+      <h2>Herramientas</h2>
+      <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+          <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Tienda</th>
+            <th>Link</th>
+            <th>Cantidad</th>
+            <th>Carrito de Compras</th>
 
-          {% for item in herramientas %}
-            <tr>
-                <th>{{item["producto"]}}</th>
-                <th>{{item["descripcion"]}}</th>
-                <th>{{item["precio"]}}</th>
-                <th>{{item["tienda"]}}</th>
-                <th><a href="{{item['link']}}">Ir</a></th>
-            </tr>
-          {% endfor %}
-        </tr>
-    </table>
+            {% for item in herramientas %}
+              <tr>
+                  <th>{{item["producto"]}}</th>
+                  <th>{{item["descripcion"]}}</th>
+                  <th>{{item["precio"]}}</th>
+                  <th>{{item["tienda"]}}</th>
+                  <th><a href="{{item['link']}}">Ir</a></th>
+                  <form action="{{ url_for('construccion_materiales') }}" method="POST">
+                    <th>
+                      <input type="number" name="cantidad" id="cantidad" min="0">
+                      <input type="hidden" name="producto" id="producto" value="{{item['producto']}}">
+                      <input type="hidden" name="precio" id="precio" value="{{item['precio']}}">
+                    </th>
+                    <th>
+                      <input type="submit" name="submit" id="submit" value="Agregar">
+                    </th>
+                  </form>
+              </tr>
+            {% endfor %}
+          </tr>
+      </table>
+      </form>
 </body>
 </html>
