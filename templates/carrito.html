@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito</h1>
+
+    <table style="color: black;" id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+        <tr>
+          <th>Producto</th>
+          <th>Precio [$] </th>
+          <th>Cantidad</th>
+          <th>-</th>
+
+          {% for item in carrito %}
+            <tr>
+                <th>{{item["producto"]}}</th>
+                <th>{{item["precio"]}}</th>
+                <th>{{item["cantidad"]}}</th>
+                <form action="{{ url_for('carrito') }}" method="POST">
+                      <input type="hidden" name="id" id="id" value="{{item['id']}}">
+                    <th>
+                      <input type="submit" name="submit" id="submit" value="Eliminar">
+                    </th>
+                  </form>
+            </tr>
+          {% endfor %}
+        </tr>
+    </table>
+
+    <h1>Total: </h1>
+    <h1>$ {{total}}</h1>
+
+</body>
+</html>
