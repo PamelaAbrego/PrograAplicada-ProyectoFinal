@@ -47,7 +47,7 @@ class Modificar_proyecto:
                 formProyecto = {"tipo": tipo, "numero":numero, "fecha_inicio":fecha_inicio, "fecha_final":fecha_final, "ubicacion":ubicacion, "descripcion":descripcion, "comentario":comentario}
                 logic.updateProyecto(id, formProyecto)
                 dataProyectos = logic.getAllProyectos()
-                return render_template("modificar_proyecto.html", dataProyectos=dataProyectos)
+                return render_template("admin_proyectos.html", dataProyectos=dataProyectos)
 
                 
 
