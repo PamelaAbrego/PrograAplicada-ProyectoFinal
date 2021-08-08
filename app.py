@@ -18,6 +18,7 @@ from routes.poda_materiales_route import PodaMateriales
 from routes.electricidad_materiales_route import ElectricidadMateriales
 from routes.modificar_proyecto_routes import Modificar_proyecto
 from routes.carrito_route import Carrito
+from routes.tarjeta_route import Tarjeta
 
 app = Flask(__name__)
 app.secret_key = "VibranioProyecto123!!"
@@ -39,6 +40,7 @@ PodaMateriales.configure_routes(app)
 ElectricidadMateriales.configure_routes(app)
 Modificar_proyecto.configure_routes(app)
 Carrito.configure_routes(app)
+Tarjeta.configure_routes(app)
 
 
 @app.route("/")

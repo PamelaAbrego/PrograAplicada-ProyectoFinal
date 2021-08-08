@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta</title>
+</head>
+<body>
+    <h1>Tarjeta</h1>
+    <form action="{{ url_for('tarjeta') }}" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="numero">Número de la tarjeta:</label><br>
+        <input type="number" name="numero" id="numero"><br><br>
+        <label for="fecha">Fecha de vencimiento:</label><br>
+        <input type="text" id="fecha" name="fecha"><br><br>
+        <label for="codigo">Código:</label><br>
+        <input type="number" name="codigo" id="codigo">
+        <br><br>
+        <input type="submit" name="submit" id="submit" value="Agregar">
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories = true, category_filter=["tarjeta"]) %}
+                
+        {% if messages %}
+                
+            {% for category, message in messages %}
+                
+                <p class="error">{{message}}</p>
+                
+            {% endfor %}
+                
+        {% endif %}
+                
+    {% endwith %}
+</body>
+</html>
