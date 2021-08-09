@@ -77,6 +77,11 @@
            color: #767676;
          }
 
+         .centr {
+            text-align: center;
+            color: #e8a900;
+         }
+
      </style>
 
       <header class="header header_style_01">
@@ -100,6 +105,7 @@
                               <a class="socials-item" href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
                               <a class="socials-item" href="#" target="_blank" title="youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                            </div>
+                           <a class="read-more" href="carrito">Mi Carrito<a>
                         </div>
                      </div>
                   </div>
@@ -108,7 +114,7 @@
 
 
     <footer id="footer">
-         <div id="footer-widgets" class="container style-1">
+         <div id="footer-widgets" class="container style-1" >
             <div class="row">
                <div class="col-md-4">
 
@@ -127,15 +133,15 @@
                      <h2 class="widget-title"><span>Equipo</span></h2>
                      <div class="textwidget">
                         
-                        <table id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+                        <table id="tabla" class="tabla" name="Registros" style="width:150%" border="1">
         <tr>
-          <th>Producto</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Tienda</th>
-          <th>Link</th>
-          <th>Cantidad</th>
-          <th>Carrito de Compras</th>
+          <th class="centr">Producto</th>
+          <th class="centr">Descripción</th>
+          <th class="centr">Precio</th>
+          <th class="centr">Tienda</th>
+          <th class="centr">Link</th>
+          <th class="centr">Cantidad</th>
+          <th class="centr">Carrito de Compras</th>
 
           {% for item in equipo %}
             <tr>
@@ -166,15 +172,15 @@
                   <div class="widget widget_text">
                      <h2 class="widget-title"><span>Materiales</span></h2>
                      <div class="textwidget">
-                      <table id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+                      <table id="tabla" class="tabla" name="Registros" style="width:150%" border="1">
         <tr>
-          <th>Producto</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Tienda</th>
-          <th>Link</th>
-          <th>Cantidad</th>
-          <th>Carrito de Compras</th>
+          <th class="centr">Producto</th>
+          <th class="centr">Descripción</th>
+          <th class="centr">Precio</th>
+          <th class="centr">Tienda</th>
+          <th class="centr">Link</th>
+          <th class="centr">Cantidad</th>
+          <th class="centr">Carrito de Compras</th>
 
           {% for item in materiales %}
             <tr>
@@ -201,19 +207,21 @@
                   </div>
 
 
+                  
                   <div class="widget widget_text">
                      <h2 class="widget-title"><span>Herramientas</span></h2>
                      <div class="textwidget">
 
-                     <table id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+
+                     <table id="tabla" class="tabla" name="Registros" style="width:150%" border="1">
         <tr>
-          <th>Producto</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Tienda</th>
-          <th>Link</th>
-          <th>Cantidad</th>
-          <th>Carrito de Compras</th>
+          <th class="centr">Producto</th>
+          <th class="centr">Descripción</th>
+          <th class="centr">Precio</th>
+          <th class="centr">Tienda</th>
+          <th class="centr">Link</th>
+          <th class="centr">Cantidad</th>
+          <th class="centr">Carrito de Compras</th>
 
           {% for item in herramientas %}
             <tr>
@@ -278,3 +286,5 @@
    </body>
 </html>
 
+
+  

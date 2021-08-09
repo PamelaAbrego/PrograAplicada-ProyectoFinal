@@ -1,129 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Cotizaciones</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizaciones</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{url_for('static', filename='style_principal.css')}}">
+   <!--<link rel="shortcut icon" href="/static/images/fevicon.ico.png" type="image/x-icon" />-->
 
-    <style>
-        table,
-        td,
-        th {
-            border: 1px solid black;
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css"> 
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="/static/style.css"> 
+
+   <link rel="stylesheet" href="/static/css/colors.css">
+
+   <link rel="stylesheet" href="/static/css/versions.css">
+
+   <link rel="stylesheet" href="/static/css/responsive.css"> 
+
+   <link rel="stylesheet" href="/static/css/building.css">
+   </head>
+
+   <body class="building_version" data-spy="scroll" data-target=".header">
+
+      <style>
+         .error {
+             color: red;
         }
+ 
+         .submit {
+             text-decoration: none;
+             padding: 10px;
+             font-weight: 300;
+             font-size: 20px;
+             color: black;
+             background-color: gold;
+             border-radius: 6px;
+             border: 2px solid rgba(0, 0, 0, 0.74);
+         }
+ 
+         .submit:hover {
+             color: black;
+             background-color: rgb(255, 235, 119);
+             border: 2px solid rgba(0, 0, 0, 0.664);
+         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-    </style>
-</head>
+         .leadi {
+            font-size: 18px;
+            line-height: 30px;
+            color: #767676;
+            margin: 0;
+            padding: 0;
+         }
+     </style>
 
-<body id="body">
-    <style>
-        .error {
-            color: red;
-        }
-
-        .submit {
-            text-decoration: none;
-            padding: 10px;
-            font-weight: 300;
-            font-size: 20px;
-            color: #ffffff;
-            background-color: #1e2b4e;
-            border-radius: 6px;
-            border: 2px solid #ffffff;
-        }
-
-        .submit:hover {
-            color: #1e2b4e;
-            background-color: gold;
-        }
-    </style>
-    <div class="container">
-        <nav class="navbar">
-            <div class="nav_icon" onclick="toggleSidebar()">
-                <i class="fa fa-bars" aria-hidden="true"></i>
+      <header class="header header_style_01">
+         <nav class="megamenu navbar navbar-default" data-spy="affix">
+            <div class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-hidden">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-hidden">
+                           <div class="gem-contacts-item gem-contacts-phone">
+                              <a class="navbar-brand" href="principal"><img src="/static/images/logo-icon.png" alt="image"><span>COMSEDI</span></a>
+                              <a class="read-more" href="principal">Regresar a la página principal<a>
+                           </div>
+                        </div>
+                        <div class="top-area-block top-area-socials socials-colored-hover">
+                           <div class="socials inline-inside"> 
+                              <a class="socials-item" href="#" target="_blank" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                              <a class="socials-item" href="#" target="_blank" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                           </div>
+                           <a class="read-more" href="carrito">Mi Carrito<a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-            <div class="navbar__rigth" style="align-items: flex-end;">
-                <form action="{{ url_for('gruas') }}" method="POST">
-                    <input class="submit" type="submit" name="submit" value="Mi Perfil">
-                </form>
-            </div>
-        </nav>
-
-        <main>
-            <div class="main__container">
-
-                <div class="main__title">
-                    <h1>Cotizaciones</h1>
-                </div>
-                <br>
-                <div class="informationCoti">
-                    <p> Comsedi S.A. de C.V. es un empresa altamente capacitada para la ejecución de proyectos en el
-                        área de construcción de obras civiles, mantenimiento de red eléctrica y poda de alto riesgo.
-                        Contamos con un equipo experimentado y la maquinaria necesaria para llevar a cabo todos los
-                        trabajos que requieras. </p>
-                    <br>
-                    <p> Para poder desarrollar tu proyecto, primero necesitas llenar un formulario de cotización, para
-                        así informarnos sobre lo que necesitas.
-                        Para un mejor servicio, es necesario que dentro del formulario seas claro con los detalles que
-                        necesitas que Comsedi haga por tí.
-                    </p>
-                    <br>
-                    <p>Seguido de eso, nos contactaremos contigo, y con una visita técnica, nuestro equipo profesional
-                        lo evaluará más de cerca.</p>
-
-                    <div id="fotoEquipo" class="img3"><img src="/static/images/equipoTrabajo.jpg" width="300"
-                            height="180" alt="Modelo2"></div>
-                </div>
-                <div class="main__cardsCoti">
-                <a href="{{url_for('form_proyectos')}}" class="botonForm2"> Realizar formulario </a>       
-                </div>
-            </div>
-        </main>
-
-        <div id="sidebar">
-            <div class="sidebar__title">
-                <div class="sidebar__img">
-                    <img src="/static/images/logo.png" alt="logo" />
-                    <h1>COMSEDI</h1>
-                </div>
-                <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
-            </div>
-
-            <div class="sidebar__menu">
-                <div class="sidebar__link">
-                    <i class="fa fa-home"></i>
-                    <a href="{{url_for('principal')}}">¿Quiénes Somos?</a>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fa fa-wrench"></i>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fa fa-book"></i>
+        
+            <div id="about" class="section wb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <div class="message-box">
+                                <h2>Cotizaciones</h2>
+                                <h5>Cotiza tu la ejecucion de tu proyecto con nosotros</h5>
+                            </div>
+                        </div>
+                
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <div class="message-box">
+                                <p class="leadi">Comsedi S.A. de C.V. es un empresa altamente capacitada para la ejecución de proyectos en el área de construcción de obras civiles, mantenimiento de red eléctrica y poda de alto riesgo. Contamos con un equipo experimentado y la maquinaria necesaria para llevar a cabo todos los trabajos que requieras. <br><br>
+                                 Para poder desarrollar tu proyecto, primero necesitas llenar un formulario de cotización, para así informarnos sobre lo que necesitas. Para un mejor servicio, es necesario que dentro del formulario seas claro con los detalles que necesitas que Comsedi haga por tí.</p>
+                                <br>
+                                <a href="{{url_for('form_proyectos')}}" class="read-more"> Realizar formulario </a> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="sidebar__link">
-                <i class="fa fa-address-book-o o" aria-hidden="true"></i>
-            </div>
-
-            <div class="sidebar__logout">
-                <i class="fa fa-power-off"></i>
-                <a href="{{url_for('home')}}" onclick="logout()">Log out</a>
-            </div>
-        </div>
-    </div>
-    <script src="{{url_for('static', filename='script_principal.js')}}"></script>
-</body>
-
+            </nav>
+        </header>
+         
+   </body>
 </html>
+
+
+  
