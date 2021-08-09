@@ -1,4 +1,4 @@
-PROYECTO PROGRAMACIÓN II
+PROYECTO PROGRAMACIÓN APLICADA
 Página Web para COMSEDI S.A. DE C.V.
 
 Index:
@@ -12,12 +12,13 @@ Roles:
 -Cliente: Un cliente se puede registrar. Ya hay clientes precargados.
 -Administrador: Un administrador no se puede registrar. Ya hay administradores precargados.
 
-Información: 
-- Página Principal: Se presenta una descripción de la empresa, las empresas que han contratados los servicios,
-los valores de la empresa y los servicios que posee.
--Misión y Visión.
--Capacitaciones.
+Página principal:
+-Información general.
+-Áreas y Materiales.
+-Servicios.
 -Proyectos.
+-Testimonios.
+-Misión y Visión.
 -Contactos.
 
 Servicios: 
@@ -25,25 +26,41 @@ Servicios:
     -Cliente:
         -Puede llenar un form para crear un registro.
         -Desde su perfil puede ver sus registros actuales y sus estados:
-            -Enviado (TERMINADO)
-            -Recibido (TERMINADO) (Si se abre prueba de administrador y se recibe, al dar refresh en el perfil se actualiza el estado)
-            -Aprobado (Pendiente por ir unido al script del administrador)
-            -Rechazado (Pendiente por ir unido al script del administrador)
+            -Enviado
+            -Aprobado
+            -Rechazado
+        -Puede ver un comentario por parte del administrador.
     -Administrador:
-        -Puede ver los registros actuales. (TERMINADO)
-        -Puede aceptarlos. (Pendiente)
-        -Puede rechazarlos. (Pendiente)
+        -Puede ver los registros actuales.
+        -Puede aceptarlos.
+        -Puede rechazarlos.
+        -Puede agregar comentarios.
+        -Puede modificar y eliminar alguno.
 
 -Cotizaciones:
     -Cliente:
         -Puede llenar un form para crear un registro.
         -Desde su perfil puede ver sus registros actuales y sus estados:
-            -Enviado (TERMINADO)
-            -Recibido (TERMINADO) (Si se abre prueba de administrador y se recibe, al dar refresh en el perfil se actualiza el estado)
-            -Aprobado (Pendiente por ir unido al script del administrador)
-            -Rechazado (Pendiente por ir unido al script del administrador)
-    -Administrador:
-        -Puede ver los registros actuales. (TERMINADO)
-        -Puede aceptarlos. (Pendiente)
-        -Puede rechazarlos. (Pendiente)
+            -Enviado
+            -Aprobado
+            -Rechazado
+        -Puede ver un comentario por parte del administrador.
 
+    -Administrador:
+        -Puede ver los registros actuales.
+        -Puede aceptarlos.
+        -Puede rechazarlos.
+        -Puede agregar comentarios.
+        -Puede modificar y eliminar alguno.
+        
+-Carrito de Compras:
+    -Cliente:
+        -Selecciona los productos de cada área y de cada tipo.
+        -Selecciona la cantidad de cada producto y se agregan al carrito.
+        -Se presenta un resumen en "Mi Carrito".
+     
+-Pago con Tarjeta:
+    -Cliente:
+        -El cliente debe agregar una tarjeta de crédito válida.
+        -Se debe contar con el saldo correspondiente en la tarjeta.
+        -Si cumple con las especificaciones, se procesa la compra con éxito.
