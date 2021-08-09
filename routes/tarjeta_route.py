@@ -42,6 +42,24 @@ class Tarjeta:
                     dataJson = response.json()
                     if dataJson['response'] == '00':
                         flash("Compra realizada con éxito", "tarjeta")
+                    elif dataJson['response'] == '05':
+                        flash("Error en el código", "tarjeta")
+                    elif dataJson['response'] == '07':
+                        flash("Error en fecha", "tarjeta")
+                    elif dataJson['response'] == '08':
+                        flash("Error en nombre", "tarjeta")
+                    elif dataJson['response'] == '14':
+                        flash("Error en número", "tarjeta")
+                    elif dataJson['response'] == '41':
+                        flash("La tarjeta ha sido reportada como perdida", "tarjeta")
+                    elif dataJson['response'] == '43':
+                        flash("La tarjeta ha sido reportada como robada", "tarjeta")
+                    elif dataJson['response'] == '51':
+                        flash("Saldo insuficiente", "tarjeta")
+                    elif dataJson['response'] == '54':
+                        flash("Tarjeta inactiva", "tarjeta")
                     elif dataJson['response'] == '61':
                         flash("Excede el limite de la tarjeta", "tarjeta")
+                    elif dataJson['response'] == 'QY':
+                        flash("Tipo de tarjeta inválida", "tarjeta")
             return redirect('tarjeta')

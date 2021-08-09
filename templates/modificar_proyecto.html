@@ -1,45 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Proyectos</title>
-</head>
-<body>
-    <div class="main__container">
-        <br>
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Modificar cotización</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
 
-        <style>
-            .boton1 {
-                text-decoration: none;
-                padding: 10px;
-                font-weight: 300;
-                font-size: 20px;
-                color: #ffffff;
-                background-color: #1e2b4e;
-                border-radius: 6px;
-                border: 2px solid #ffffff;
-            }
+   <!--<link rel="shortcut icon" href="/static/images/fevicon.ico.png" type="image/x-icon" />-->
 
-            .boton1:hover {
-                color: #1e2b4e;
-                background-color: #ffffff;
-            }
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css"> 
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="/static/style.css"> 
 
-            .tabla {
-                text-align: center;
-            }
-        </style>
-        <div class="main__title">
-            <h1>MODIFICAR UNA COTIZACIÓN</h1>
-          </div>
-          <form action="{{ url_for('modificar_proyecto') }}" method="post">
+   <link rel="stylesheet" href="/static/css/colors.css">
+
+   <link rel="stylesheet" href="/static/css/versions.css">
+
+   <link rel="stylesheet" href="/static/css/responsive.css"> 
+
+   <link rel="stylesheet" href="/static/css/building.css">
+   </head>
+
+   <body class="building_version" data-spy="scroll" data-target=".header">
+
+   {% with messages = get_flashed_messages()%}
+
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages%}
+        <li> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% endwith %}
+
+      <style>
+         .error {
+             color: red;
+        }
+ 
+         .submit {
+             text-decoration: none;
+             padding: 10px;
+             font-weight: 300;
+             font-size: 20px;
+             color: black;
+             background-color: gold;
+             border-radius: 6px;
+             border: 2px solid rgba(0, 0, 0, 0.74);
+         }
+ 
+         .submit:hover {
+             color: black;
+             background-color: rgb(255, 235, 119);
+             border: 2px solid rgba(0, 0, 0, 0.664);
+         }
+
+         .leadi {
+            font-size: 18px;
+            line-height: 30px;
+            color: #767676;
+            margin: 0;
+            padding: 0;
+         }
+
+         .Campo{
+             color: #000000;
+         }
+     </style>
+
+      <header class="header header_style_01">
+         <nav class="megamenu navbar navbar-default" data-spy="affix">
+            <div class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-hidden">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-hidden">
+                           <div class="gem-contacts-item gem-contacts-phone">
+                              <a class="navbar-brand" href="principal"><img src="/static/images/logo-icon.png" alt="image"><span>COMSEDI</span></a>
+                              <a class="read-more" href="cotizaciones">Regresar a Cotizaciones<a>
+                           </div>
+                        </div>
+                        <div class="top-area-block top-area-socials socials-colored-hover">
+                           <div class="socials inline-inside"> 
+                              <a class="socials-item" href="#" target="_blank" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                              <a class="socials-item" href="#" target="_blank" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
+                              <a class="socials-item" href="#" target="_blank" title="youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                           </div>
+                           <a class="read-more" href="carrito">Mi Carrito<a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        
+           
+            <div id="contact" class="section wb">
+                <div class="container">
+                    <div class="section-title row text-center">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h3>MODIFICAR UNA COTIZACIÓN DE PROYECTO</h3>
+                            <p class="lead">A continuación modificarás los datos de la cotización de proyecto seleccionada</p>
+
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="contact_form">
+                            <div id="message"></div>
+                            <form action="{{ url_for('modificar_proyecto') }}" method="post">
             <p> <b> Tipo de cotización </b> </p>
-            <p>Seleccionados: {{proyecto["tipo"]}}</p>
+            <p>Seleccionados anteriormente: {{proyecto["tipo"]}}</p>
             <input type="checkbox" id="Eléctrico" name="Coti" value="Eléctrico">
-            <label for "CotiCivil"> Eléctrico </label> <br>
+            <label for "CotiCivil"> Eléctrico </label> <br><br>
             <input type="checkbox" id="Civil" name="Coti" value="Civil">
-            <label for "CotiCivil"> Civil </label> <br>
+            <label for "CotiCivil"> Civil </label> <br><br>
             <input type="checkbox" id="Poda" name="Coti" value="Poda">
             <label for "CotiPoda"> Poda </label>
             <br>
@@ -73,6 +159,18 @@
             <input type="hidden" id="id" name="id" value="{{proyecto['id']}}">
             <input class="submit" type="submit" value="Modificar">
         </form>
-    </div>
-</body>
+                            </div>
+                        </div>
+                    <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+
+
+            </nav>
+        </header>
+         
+   </body>
 </html>
