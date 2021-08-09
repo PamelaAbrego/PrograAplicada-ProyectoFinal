@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- Site Metas -->
-   <title>Cotizaciones</title>
+   <title>Perfil Cliente</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -68,6 +68,11 @@
             color: white;
             font-size: 40px;
          }
+
+         .centr {
+            text-align: center;
+            color: #e8a900;
+         }
      </style>
 
       <header class="header header_style_01">
@@ -91,6 +96,7 @@
                               <a class="socials-item" href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
                               <a class="socials-item" href="#" target="_blank" title="youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                            </div>
+                           <a class="read-more" href="carrito">Mi Carrito<a>
                         </div>
                      </div>
                   </div>
@@ -119,15 +125,17 @@
                   <div class="widget widget_text">
                      <h2 class="widget-title"><span>Mis solicitudes de alquileres</span></h2>
                      <div class="textwidget">
-                        <table id="tabla" class="tabla" name="Registros" style="width:90%" border="1">
+
+                     <!--Comentario para modificar
+                        <table id="tabla" class="tabla" name="Registros" style="width:150%" border="1">
                             <tr>
-                                <th>Modelo de grua</th>
-                                <th>Cantidad</th>
-                                <th>Ubicacion</th>
-                                <th>Fecha</th>
-                                <th>Tiempo requerido</th>
-                                <th>Estado</th>
-                                <th>Comentario</th>
+                                <th class="centr">Modelo de grua</th>
+                                <th class="centr">Cantidad</th>
+                                <th class="centr">Ubicacion</th>
+                                <th class="centr">Fecha</th>
+                                <th class="centr">Tiempo requerido</th>
+                                <th class="centr">Estado</th>
+                                <th class="centr">Comentario</th>
 
                                 {% for grua in dataGruas %}
                                     <tr>
@@ -142,23 +150,24 @@
                                 {% endfor %}
                             </tr>
                         </table>
+                        -->
                      </div>  
                   </div>
 
                   <div class="widget widget_text">
                      <h2 class="widget-title"><span>Mis cotizaciones de proyectos</span></h2>
                      <div class="textwidget">
-                        <table id="tablaProy" class="tabla" name="RegistrosProy" style="width:90%" border="1">
+                        <table id="tablaProy" class="tabla" name="RegistrosProy" style="width:150%" border="1">
                             <tr>
-                                <th>Fecha envío solicitud </th>
-                                <th>Tipo de cotización</th>
-                                <th>Número telefónico</th>
-                                <th>Fecha de inicio</th>
-                                <th>Fecha final</th>
-                                <th>Ubicación proyecto</th>
-                                <th>Descripción</th>
-                                <th>Estado</th>
-                                <th>Comentario</th>
+                                <th class="centr">Fecha envío solicitud </th>
+                                <th class="centr">Tipo de cotización</th>
+                                <th class="centr">Número telefónico</th>
+                                <th class="centr">Fecha de inicio</th>
+                                <th class="centr">Fecha final</th>
+                                <th class="centr">Ubicación proyecto</th>
+                                <th class="centr">Descripción</th>
+                                <th class="centr">Estado</th>
+                                <th class="centr">Comentario</th>
 
                                 {% for proyecto in dataProyectos %}
                             <tr>
