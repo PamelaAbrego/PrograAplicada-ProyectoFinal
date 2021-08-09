@@ -8,7 +8,7 @@ class UsuariosLogic(PybaLogic):
     def insertUsuario(self, user, email, role, password, salt):
         database = self.databaseObj
         sql = (
-            "INSERT INTO `comsedi`.`usuarios` (`id`,`user`,`email`,`role`,`password`,`salt`)"
+            "INSERT INTO `heroku_de080cfa793afc7`.`usuarios` (`id`,`user`,`email`,`role`,`password`,`salt`)"
             + f"VALUES (0, '{user}', '{email}','{role}','{password}', '{salt}');"
         )
         rows = database.executeNonQueryRows(sql)
@@ -16,14 +16,14 @@ class UsuariosLogic(PybaLogic):
 
     def getUsuarioId(self, id):
         database = self.databaseObj
-        sql = f"SELECT * FROM comsedi.usuarios where id = {id};"
+        sql = f"SELECT * FROM heroku_de080cfa793afc7.usuarios where id = {id};"
         result = database.executeQuery(sql)
         return result
 
     def updateUsuario(self, id, usuario):
         database = self.databaseObj
         sql = (
-            "UPDATE `comsedi`.`usuarios` "
+            "UPDATE `heroku_de080cfa793afc7`.`usuarios` "
             + f"SET `user` = '{usuario['user']}', `email` = '{usuario['email']}',`role` = '{usuario['role']}', `password` = '{usuario['password']}', `salt` = '{usuario['salt']}' "
             + f"WHERE `id` = {id};"
         )
@@ -32,13 +32,13 @@ class UsuariosLogic(PybaLogic):
 
     def deleteUsuario(self, id):
         database = self.databaseObj
-        sql = f"DELETE FROM `comsedi`.`usuarios` WHERE id = {id};"
+        sql = f"DELETE FROM `heroku_de080cfa793afc7`.`usuarios` WHERE id = {id};"
         rows = database.executeNonQueryRows(sql)
         return rows
 
     def checkUser(self, user):
         database = self.databaseObj
-        sql = f"SELECT user FROM `comsedi`.`usuarios` WHERE user like '{user}';"
+        sql = f"SELECT user FROM `heroku_de080cfa793afc7`.`usuarios` WHERE user like '{user}';"
         result = database.executeQuery(sql)
         return result
 
@@ -46,7 +46,7 @@ class UsuariosLogic(PybaLogic):
         database = self.createDatabaseObj()
         sql = (
             "SELECT user, password, salt, role "
-            + f"FROM comsedi.usuarios where user like '{userName}';"
+            + f"FROM heroku_de080cfa793afc7.usuarios where user like '{userName}';"
         )
         result = database.executeQuery(sql)
         if len(result) > 0:
@@ -58,7 +58,7 @@ class UsuariosLogic(PybaLogic):
         database = self.createDatabaseObj()
         sql = (
             "SELECT email "
-            + f"FROM comsedi.usuarios where user like '{userName}';"
+            + f"FROM heroku_de080cfa793afc7.usuarios where user like '{userName}';"
         )
         result = database.executeQuery(sql)
         if len(result) > 0:
@@ -70,7 +70,7 @@ class UsuariosLogic(PybaLogic):
         database = self.createDatabaseObj()
         sql = (
             "SELECT * "
-            + f"FROM comsedi.usuarios;"
+            + f"FROM heroku_de080cfa793afc7.usuarios;"
         )
         result = database.executeQuery(sql)
         if len(result) > 0:

@@ -9,7 +9,7 @@ class CarritoLogic(PybaLogic):
         database = self.databaseObj
         total = precio*cantidad
         sql = (
-            "INSERT INTO `comsedi`.`carrito` (`id`,`usuario`,`producto`,`precio`,`cantidad`,`total`)"
+            "INSERT INTO `heroku_de080cfa793afc7`.`carrito` (`id`,`usuario`,`producto`,`precio`,`cantidad`,`total`)"
             + f"VALUES (0, '{user}', '{producto}','{precio}','{cantidad}', '{total}');"
         )
         rows = database.executeNonQueryRows(sql)
@@ -18,7 +18,7 @@ class CarritoLogic(PybaLogic):
     def getAllForUser(self, user):
         database = self.databaseObj
         sql = (
-            f"SELECT * FROM comsedi.carrito WHERE usuario like '{user}';"
+            f"SELECT * FROM heroku_de080cfa793afc7.carrito WHERE usuario like '{user}';"
         )
         data = database.executeQuery(sql)
         return data
@@ -26,12 +26,12 @@ class CarritoLogic(PybaLogic):
     def getTotalByUser(self, user):
         database = self.databaseObj
         sql = (
-            f"SELECT sum(total) FROM comsedi.carrito WHERE usuario like '{user}';"
+            f"SELECT sum(total) FROM heroku_de080cfa793afc7.carrito WHERE usuario like '{user}';"
         )
         total = database.executeQuery(sql)
         return total[0]
 
     def deleteById(self, id):
         database = self.databaseObj
-        sql = f"DELETE FROM `comsedi`.`carrito` WHERE id = {id};"
+        sql = f"DELETE FROM `heroku_de080cfa793afc7`.`carrito` WHERE id = {id};"
         database.executeNonQueryRows(sql)

@@ -2,11 +2,20 @@ import pymysql
 
 class PybaDatabase:
     def __init__(self):
+        """
         self.host = "localhost"
         self.port = 3306
         self.user = "root"
         self.password = "12345"
         self.database = "comsedi"
+        self.connection = self.createConnection()
+        self.cursor = self.createCursor()
+        """
+        self.host = "us-cdbr-east-04.cleardb.com"
+        self.port = 3306
+        self.user = "b7880256c85fc7"
+        self.password = "dfdbe64a"
+        self.database = "heroku_de080cfa793afc7"
         self.connection = self.createConnection()
         self.cursor = self.createCursor()
 

@@ -8,7 +8,7 @@ class ProyectosLogic(PybaLogic):
     def insertProyecto(self, fecha_envio, tipo, usuario, numero, fecha_inicio, fecha_final, ubicacion, descripcion, estado):
         database = self.databaseObj
         sql = (
-            "INSERT INTO `comsedi`.`form_servicios` (`id`, `fecha_envio`,`tipo`,`usuario`,`numero`,`fecha_inicio`,`fecha_final`,`ubicacion`, `descripcion`, `estado`)"
+            "INSERT INTO `heroku_de080cfa793afc7`.`form_servicios` (`id`, `fecha_envio`,`tipo`,`usuario`,`numero`,`fecha_inicio`,`fecha_final`,`ubicacion`, `descripcion`, `estado`)"
             + f"VALUES(0, '{fecha_envio}', '{tipo}', '{usuario}', {numero}, '{fecha_inicio}', '{fecha_final}', '{ubicacion}', '{descripcion}', '{estado}' );"
         )
         rows = database.executeNonQueryRows(sql)
@@ -16,14 +16,14 @@ class ProyectosLogic(PybaLogic):
 
     def getProyectoById(self, id):
         database = self.databaseObj
-        sql = f"SELECT * FROM comsedi.form_servicios where id = {id};"
+        sql = f"SELECT * FROM heroku_de080cfa793afc7.form_servicios where id = {id};"
         result = database.executeQuery(sql)
         return result[0]
 
     def updateProyecto(self, id, proyecto):
         database = self.databaseObj
         sql = (
-            "UPDATE `comsedi`.`form_servicios` "
+            "UPDATE `heroku_de080cfa793afc7`.`form_servicios` "
             + f"SET `tipo` = '{proyecto['tipo']}', `numero` = '{proyecto['numero']}', `fecha_inicio` = '{proyecto['fecha_inicio']}', `fecha_final` = '{proyecto['fecha_final']}', `ubicacion` = '{proyecto['ubicacion']}', `descripcion` = '{proyecto['descripcion']}',`comentario` = '{proyecto['comentario']}'"
             + f"WHERE `id` = {id};"
         )
@@ -32,13 +32,13 @@ class ProyectosLogic(PybaLogic):
 
     def deleteProyecto(self, id):
         database = self.databaseObj
-        sql = f"DELETE FROM `comsedi`.`form_servicios` WHERE id = {id};"
+        sql = f"DELETE FROM `heroku_de080cfa793afc7`.`form_servicios` WHERE id = {id};"
         rows = database.executeNonQueryRows(sql)
         return rows
 
     def getAllProyectos(self):
         database = self.databaseObj
-        sql = f"SELECT * FROM comsedi.form_servicios;"
+        sql = f"SELECT * FROM heroku_de080cfa793afc7.form_servicios;"
         result = database.executeQuery(sql)
         return result
 
@@ -50,7 +50,7 @@ class ProyectosLogic(PybaLogic):
 
     def getAllByUser(self, user):
         database = self.databaseObj
-        sql = f"SELECT * FROM comsedi.form_servicios where usuario like '{user}';"
+        sql = f"SELECT * FROM heroku_de080cfa793afc7.form_servicios where usuario like '{user}';"
         result = database.executeQuery(sql)
         return result
 
@@ -62,7 +62,7 @@ class ProyectosLogic(PybaLogic):
             cambio = "Aceptado"
         
         sql = (
-            "UPDATE `comsedi`.`form_servicios` "
+            "UPDATE `heroku_de080cfa793afc7`.`form_servicios` "
             + f"SET `estado` = '{cambio}' "
             + f"WHERE `id` = {id};"
         )
